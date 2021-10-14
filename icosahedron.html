@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>The Icosahedron</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	 crossorigin="anonymous">
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+	<header class="bg-dark border border-light border-3 rounded text-center text-light">
+    <div class="container bg-dark mx-auto">
+			<img src="https://www.dropbox.com/s/13qsykorcxod5r6/Ico.png?raw=1" alt="Icosahedron D20 logo" class="" style="width: 150px">
+      <h3 id="mainHeading">The Icosahedron : Game Design Document</h3>
+		<h5>Outlining the framework, features, and rules of the game.</h5>
+    </div>
+		
+
+	</header>
+
+  <div class="container border border-dark px-2">
+	<div id="contents" class="container border rounded border-3 border-dark mx-auto w-50 m-3">
+
+		<table class=" table mx-auto text-center ">
+			<thead class="table-dark">
+				<tr>
+					<th scope="col">Contents</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row"><a href="#intro">Introduction</a></th>
+				</tr>
+				<tr>
+					<th scope="row"><a href="#framework">Framework</a></th>
+				</tr>
+				<tr>
+					<th scope="row"><a href="#planes">Planes</a></th>
+				</tr>
+				<tr>
+					<th scope="row"><a href="#tier1">Tier 1</a></th>
+				</tr>
+        <tr>
+					<th scope="row"><a href="#roles">Roles</a></th>
+				</tr>
+				<tr>
+					<th scope="row"><a href="#tier2">Tier 2</a></th>
+				</tr>
+        
+			</tbody>
+		</table>
+
+	</div>
+
+	<div id="intro" class="container">
+		<h5 class="text-center"><u>Introduction</u></h5>
+		<p style="text-indent: 50px">An Icosahedron is a twenty sided polygon with equalateral triangle faces, most commonly reffered
+			to by us as a twenty sided die or D20. In another universe it is a whole planet formed of twenty unique planes/environments
+			wherein the actions and destiny of all living things are determined by the roll of their own personal internal icosahedron.
+			On planet Icosa, A "20" results in great rewards, exhaulting victories, and bountiful harvests; whilst rolling a "1" can
+			mean suffering, famine, and death...</p>
+		<p style="text-indent: 50px">Plane 20 of Icosa is home to the Crit Castle, currently being corrupted by a foul being known
+			as Feyl. Feyl and it's minions are spreading a plague of "1's" across the planes of Icosahedron, increasing the amount
+			of sorrow and death to all flora and fauna. The Sole is the lowest of these planes and is home to a small village on
+			the brink of destitution, desperate for a savior. Will you venture into The Icosahedron and restore balance to the life
+			of this world?</p>
+	</div>
+
+	<div id="framework" class="container">
+		<h5 class="text-center"><u>Framework</u></h5>
+		<p style="text-indent: 50px">
+			The framework for Icosahedron is based off of tabletop role-playing games using a D20 and other dice to determine a random
+			outcome to situations. We were inspired by aspects of Fallout 1 and 2 for the PC where if a players luck was bad enough,
+			anytime they tried to use their weapon, there was a larger chance that the weapon would break, or they would fall down
+			and lose their turn. Let's face it, sometimes we are just unlucky. Sometimes in life we roll a "1" and we have to deal
+			with that when it happens. In Icosahedron, the player suffers consequences when a "1" is rolled including but not limited
+			to: Broken Weapon, Reduced Stats, Loss of Life Points, Loss of Turn; while the opposite is true of rolling a "20". This
+			adds the thrill and frustration of chance with every action. To apply this, we made a chart of <b>"Calamities" and "Enhancements"</b> that can be determined with the roll of a D20.
+      </p><br>
+      <div id="calamityButton" class="d-flex justify-content-center">
+      <button class="btn-secondary btn-lg" onclick="displayTable(calamityTable)">Calamities and Enhancements Table</button>
+      </div><br>
+
+<div id="calamityTable" class="d-none">
+  <div class="d-flex justify-content-center">
+  <button class="btn-secondary btn-lg" onclick="closeTable(calamityTable)">Close Table</button>
+      </div>
+      <h5>Calamities and Enhancements carry over and stack each level. Character stats can not go below -2 and cannot go above 8.</h5>
+      
+      <table class=" table table-secondary table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">D20</th>
+            <th scope="col">Calamities</th>
+            <th scope="col">Enhancements</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Half current life; All stats -1</td>
+            <td>No Enhancements...</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Silence: No Abilities</td>
+            <td>Plus 1 to Attack, Magic, Speed, or Charm</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Half current life</td>
+            <td>Plus 5 to Max Life and restores Life</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>Equipment Broken: No weapon and Defense = 10</td>
+            <td>Healing Water: restores 10 Life</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>Attack -1</td>
+            <td>Weapon Enhancement: D6 -> D8 -> D10 -> D12 -> 2D6 -> 2D8...</td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td>Speed -1</td>
+            <td>Ability Enhancement: D6 -> D8 -> D10 -> D12 -> 2D6 -> 2D8...</td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td>Defense -1</td>
+            <td>Healing Water: restores 10 Life</td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td>Magic -1</td>
+            <td>Plus 10 to Max Life and restores Life</td>
+          </tr>
+          <tr>
+            <th scope="row">9</th>
+            <td>Charm -1</td>
+            <td>Ability Enhancement: D6 -> D8 -> D10 -> D12 -> 2D6 -> 2D8...</td>
+          </tr>
+          <tr>
+            <th scope="row">10</th>
+            <td>Attack -1</td>
+            <td>Plus 1 to Attack, Magic, Speed, or Charm; Plus 5 Max Life</td>
+          </tr>
+          <tr>
+            <th scope="row">11</th>
+            <td>Speed -1</td>
+            <td>Plus 5 Max Life; Weapon Enhancement: D6 -> D8 -> D10 -> D12 -> 2D6 -> 2D8...</td>
+          </tr>
+          <tr>
+            <th scope="row">12</th>
+            <td>Defense -1</td>
+            <td>Plus 5 Max Life; Ability Enhancement: D6 -> D8 -> D10 -> D12 -> 2D6 -> 2D8...</td>
+          </tr>
+          <tr>
+            <th scope="row">13</th>
+            <td>Magic -1</td>
+            <td>Plus 5 Max Life; Healing Water: restores 10 Life</td>
+          </tr>
+          <tr>
+            <th scope="row">14</th>
+            <td>Charm -1</td>
+            <td>Plus 10 Max Life;</td>
+          </tr>
+          <tr>
+            <th scope="row">15</th>
+            <td>Silence: No Abilities</td>
+            <td>Defense + 1</td>
+          </tr>
+          <tr>
+            <th scope="row">16</th>
+            <td>Half current life</td>
+            <td>Plus 1 to Attack, Magic, Speed, or Charm</td>
+          </tr>
+          <tr>
+            <th scope="row">17</th>
+            <td>Equipment Broken: No weapon and Defense = 10</td>
+            <td>Plus 10 Max Life and restore life</td>
+          </tr>
+          <tr>
+            <th scope="row">18</th>
+            <td>Half current life</td>
+            <td>Plus 10 Max Life and restore life; Plus 1 to Attack, Magic, Speed, or Charm</td>
+          </tr>
+          <tr>
+            <th scope="row">19</th>
+            <td>Remove 1 Calamity</td>
+            <td>Plus 1 to Attack, Magic, Speed, or Charm; Remove 1 Calamity</td>
+          </tr>
+          <tr>
+            <th scope="row">20</th>
+            <td>Remove ALL Calamities</td>
+            <td>Plus 10 Max Life and restore life; Plus 1 to Attack, Magic, Speed, or Charm; Remove ALL Calamities; Defense </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+  <button class="btn-secondary btn-lg" onclick="closeTable(calamityTable)">Close Table</button>
+      </div>
+    </div>
+
+      <p style="text-indent: 50px">
+        As stated in the <a href="#intro">introduction</a>, an icosahedron is made up of 20 sides, or planes, and we wondered what it would be like if each plane was essentially it's own country with unique terrain, creatures, and puzzles that connects to 3 other planes with their own unique features. We then created classes to create the creatures to populate these planes. One detail we are striving for is to have all the beings be gender neutral, and so wanted to start with what a general "being" would consist of. We started with the Being class and then branched off from that with Hero and Rival; then created Loot, Food, Weapon, and Ability classes to create objects to populate some of the fields of Heroes and Rivals. Next we created the Cache class which we used to create arrays of objects. Now we can create a Plane class comprised of seperate Caches for Rivals, Loot, Food, Traps, etc., that can be easily populated with as many objects as the Plane builder wants and can then be selected directly or randomly through Math.random like a dice roll. Now we have a framework to create any type of creature we want with any type of stats, along with any type of object to then create as many levels as we want, each populated with unique creatures and objects. Click the classes below to see the fields and methods used for each class.
+      </p><br>
+      <div id="classButtons" class="container-fluid border border-success p-2">
+        <h3 class="text-center text-success"><u>Classes</u></h3>
+      <div class="d-flex list-group list-group-horizontal justify-content-center mx-auto">
+            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayTable(beingTable)">Being</h5>
+            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayTable(heroTable)">Hero</h5>
+            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayTable(rivalTable)">Rival</h5>
+            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayTable(bossTable)">Boss</h5>
+            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayTable(weaponTable)">Weapon</h5>
+            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayTable(abilityTable)">Ability</h5>
+            
+            </div>
+            <div class="d-flex list-group list-group-horizontal justify-content-center">
+            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayTable(lootTable)">Loot</h5>
+            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayTable(foodTable)">Food</h5>
+            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayTable(gooberTable)">Goober</h5>            
+            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayTable(trapTable)">Trap</h5>
+            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayTable(cacheTable)">Cache</h5>
+            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayTable(planeTable)">Plane</h5>
+            
+        </div>
+      </div>
+        
+      <div id="beingTable" class="d-none">
+            
+          <div class="text-center text-light bg-success p-1">
+            <h5>Being Class</h5>
+            
+          </div><br>
+          
+            <table class="table">
+          
+              <tbody>
+                <tr>
+                  <th scope="col" class="table-success">Name</th>
+                  <td>The name of the being</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Title</th>
+                  <td>States the kind of being it is</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Max-Life</th>
+                  <td>Stores the current maximum amount of Life the being has.</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Life</th>
+                  <td>Stores the beings current Life points</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Attack</th>
+                  <td>The Attack stat number is added to the beings attack rolls and attack abilities.</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Defense</th>
+                  <td>The Defense stat is the number another being's attack roll must beat to land a hit.</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Magic</th>
+                  <td>The Magic stat number is added to magic abilities, used to disarm magic traps, and to find magically hidded paths and items.</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Speed</th>
+                  <td>The Speed stat number is added to the being's order roll which determines the order of combat. It is also used to avoid traps and escape danger</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Charm</th>
+                  <td>The Charm stat number is added to charm abilities, used for social interactions, and to discover hidden areas and treasure</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Weapon</th>
+                  <td>The Weapon number indicates what die to use for determining the weapon's damage</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Pack</th>
+                  <td>The Pack is an empty array inventory used to store items the being finds</td>
+                </tr>
+                
+                <tr>
+                  <th scope="col" class="table-success">rollD20()</th>
+                  <td>The RollD20 method uses the javascript Math.random to generate a random number between 1-20</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">plusStat(stat, num)</th>
+                  <td>The plusStat method increases a specific stat by a specific number</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">minusStat(stat, num)</th>
+                  <td>The minusStat method decreases a specific stat by a specific number</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">orderRoll()</th>
+                  <td>The OrderRoll method uses the rollD20 method and then adds the being's Speed stat to it and compares that number to their opponents' orderRoll to determine the order of combat</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">search()</th>
+                  <td>The Search method uses the rollD20 method and then adds the being's Charm stat and compares that to the difficulty of the thing they are searching for</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">consume(item)</th>
+                  <td>The Consume method uses an item and follows the conditions of that item</td>
+                </tr>
+              </tbody>
+              
+
+              <div id="beingJS" class="modal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Being Class JavaScript</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                  <div class="modal-body">
+        <pre>class Being {
+  constructor(name, title, maxLife, life, attack, defense, magic, speed, charm, weapon, pack) {
+    this.name=name; this.title=title; this.maxLife=maxLife; this.life=life; this.attack=attack; this.defense=defense; this.magic=magic; this.speed=speed; this.charm=charm; this.weapon=weapon; this.pack=pack;
+  }
+
+  rollD20() {
+    let roll = Math.floor(Math.random()*20) +1;
+    return roll; 
+  }
+
+  plusStat(stat, num) {
+    stat = stat + num;
+    return stat;
+  }
+
+  minusStat(stat, num) {
+    stat = stat - num;
+    return stat;
+  }
+  
+  attackTarget(target) {
+    let attackRoll = this.rollD20();
+    let bonus = this.attack;
+    let attackNum = attackRoll + bonus;
+
+    if(attackNum <= target.defense) {
+      return `${this.name} rolls an attack of: ${attackRoll} + ${bonus}\n which does not overcome ${target.name}'s defenses`;
+    } else {
+    let weapon = Math.floor(Math.random()*this.weapon) +1;
+    
+    let damage = weapon + bonus;
+    target.life = target.life - damage;
+    return `${this.name} rolls an attack of: ${attackRoll} + ${bonus}\nwhich penetrates ${target.name}'s defenses doing ${damage} damage!`;
+    }
+  }
+  search() {
+   let searchRoll = this.rollD20() + this.charm;
+    if(searchRoll > 10) {
+      return "found"
+    }
+    return searchRoll;
+  }
+
+  orderRoll() {
+    let orderRoll = this.rollD20() + this.speed;
+    return orderRoll;
+  }
+
+  consume(loot) {
+    let healing = loot.healing;
+    if(this.life < this.maxLife) {
+      this.life = this.life + healing;
+      loot.quantity--;
+      if(this.life > this.maxLife) {
+        this.life = this.maxLife;
+      }
+    } else {
+      return 'Not Hungry'
+    }
+  }
+}</pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+            </table>
+            <button type="button" class="btn-lg btn-success d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#beingJS">See JavaScript
+              </button>
+              <button class="btn-success btn-lg d-flex mx-auto mx-auto m-2" onclick="closeTable(beingTable)">Close Table</button>
+          </div>
+
+          <div id="heroTable" class="d-none">
+          <div class="text-center text-light bg-success p-1">
+            <h5>Hero Class</h5>
+            <p>
+              The Hero class extends the Being class, meaning it has all the fields and methods of Being as well as adding abilities and another method.
+            </p>
+          </div><br>
+
+          <div>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th scope="col" class="table-success">Attack Ability</th>
+                  <td>Each Hero has an Attack Ability that has it's own damage die and a cooldown for how many turns until the player can use that ability again</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Magic Ability</th>
+                  <td>Each Hero has a Magic Ability that has it's own damage die and a cooldown for how many turns until the player can use that ability again</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Speed Ability</th>
+                  <td>Each Hero has a Speed Ability that has it's own damage die and a cooldown for how many turns until the player can use that ability again</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Charm Ability</th>
+                  <td>Each Hero has a Speed Ability that has it's own damage die and a cooldown for how many turns until the player can use that ability again</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">loot(target)</th>
+                  <td>The loot method allows the Hero to move the items to their pack</td>
+                </tr>
+              </tbody>
+
+              <div id="heroJS" class="modal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Hero Class JavaScript</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                  <div class="modal-body">
+        <pre>class Hero extends Being {
+  constructor(name, title, maxLife, life, attack, defense, magic, speed, charm, weapon, attackAbility, magicAbility, speedAbility, charmAbility, pack) {
+    super(name, title, maxLife, life, attack, defense, magic, speed, charm, weapon, pack)
+    this.attackAbility=attackAbility; this.magicAbility=magicAbility;
+    this.speedAbility=speedAbility; this.charmAbility=charmAbility;
+  }
+
+loot(target) {
+  
+  for(let i=0; i < target.pack.length; i++) {
+    
+    if(target.pack[i] === this.pack[i]) {
+      this.pack[i].quantity++;
+      target.pack.splice(i, 1);
+    }if(target.pack[i] !== this.pack[i]){
+       this.pack.push(target.pack[i])
+       target.pack.splice(i, 1);
+    }
+    
+  }
+}
+}</pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+            </table>
+            <button type="button" class="btn-lg btn-success d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#heroJS">See JavaScript
+              </button>
+              <button class="btn-success btn-lg d-flex mx-auto mx-auto m-2" onclick="closeTable(heroTable)">Close Table</button>
+
+          </div>
+
+          </div>
+
+          <div id="rivalTable" class="d-none">
+          
+          <div class="text-center text-light bg-success p-1">
+            <h5>Rival Class</h5>
+            <p>
+              The Rival class just extends the Hero class to differentiate the two.
+            </p>
+          </div><br>
+          
+          </div>
+
+          <div id="bossTable" class="d-none">
+            <button class="btn-success btn-lg m-2" onclick="closeTable(bossTable)">Close Table</button>
+          <div class="text-center text-light bg-success p-1">
+            <h5>Boss Class</h5>
+            <p>
+              The Boss class just extends the Rival class to differentiate the two.
+            </p>
+          </div><br>
+          
+          </div>
+
+          <div id="lootTable" class="d-none">
+            
+          <div class="text-center text-light bg-success p-1">
+            <h5>Loot Class</h5>
+            <p>
+              The Loot class is the base class for any usable item
+            </p>
+          </div><br>
+
+          <table class="table">
+            <tbody>
+              <tr>
+                  <th scope="col" class="table-success">Name</th>
+                  <td>The name of the item</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Info</th>
+                  <td>This is a short desription of the item</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Quantity</th>
+                  <td>This number shows the amount of the item</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">increase()</th>
+                  <td>This method increases quantity by 1</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">decrease()</th>
+                  <td>This method decreases quantity by 1</td>
+                </tr>
+            </tbody>
+
+            <div id="lootJS" class="modal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Loot Class JavaScript</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                  <div class="modal-body">
+        <pre>class Loot {
+  constructor(name, info, quantity) {
+    this.name=name; this.info=info; this.quantity=quantity;   
+  }
+
+  increase(){
+this.quantity++;
+}
+  decrease(){
+if(this.quantity > 0) {
+  this.quantity--;
+  }
+}
+  
+}</pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+                        
+          </table>
+          
+          <button type="button" class="btn-lg btn-success d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#lootJS">See JavaScript
+              </button>
+              <button class="btn-success btn-lg d-flex mx-auto mx-auto m-2" onclick="closeTable(lootTable)">Close Table</button>
+                    
+          </div>
+
+          <div id="weaponTable" class="d-none">
+            
+          <div class="text-center text-light bg-success p-1">
+            <h5>Weapon Class</h5>
+            <p>
+              The Weapon class extends Loot but adds a damage die field.
+            </p>
+          </div><br>
+
+          <table class="table">
+            <tbody>
+              <tr>
+                  <th scope="col" class="table-success">Damage</th>
+                  <td>This number is the die type that is used to calculate damage with this weapon</td>
+                </tr>
+          </tbody>
+          </table>
+          
+                    
+          </div>
+
+          <div id="foodTable" class="d-none">
+            
+          <div class="text-center text-light bg-success p-1">
+            <h5>Food Class</h5>
+            <p>
+              The Food class extends Loot but adds a healing die field.
+            </p>
+          </div><br>
+
+          <table class="table">
+            <tbody>
+              <tr>
+                  <th scope="col" class="table-success">Healing</th>
+                  <td>This number is the die type that is used to calculate healing when this item is consumed</td>
+                </tr>
+          </tbody>
+          </table>
+          
+                    
+          </div>
+
+          <div id="gooberTable" class="d-none">
+            
+          <div class="text-center text-light bg-success p-1">
+            <h5>Goober Class</h5>
+            <p>
+              The Goober class extends Loot but it is used as it's own class to label items as key story items
+            </p>
+          </div><br>
+                
+                   
+          </div>
+
+          <div id="abilityTable" class="d-none">
+            
+          <div class="text-center text-light bg-success p-1">
+            <h5>Ability Class</h5>
+            <p>
+              The Ability class allows custom abilities for any being
+            </p>
+          </div><br>
+
+          <table class="table">
+            <tbody>
+              <tr>
+                  <th scope="col" class="table-success">Name</th>
+                  <td>The name of the ability</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Info</th>
+                  <td>Description of the ability</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Damage</th>
+                  <td>This number is the die type that is used to calculate damage with this ability</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Cooldown</th>
+                  <td>This number shows how many turns until the ability can be used again</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Count</th>
+                  <td>This number keeps track of the cooldown turns</td>
+                </tr>
+          </tbody>
+          </table>
+          
+                    
+          </div>
+
+          <div id="trapTable" class="d-none">
+            
+          <div class="text-center text-light bg-success p-1">
+            <h5>Trap Class</h5>
+            <p>
+              The Trap class allows custom trap types for the player to overcome
+            </p>
+          </div><br>
+
+          <table class="table">
+            <tbody>
+              <tr>
+                  <th scope="col" class="table-success">Name</th>
+                  <td>The name of the trap</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Type</th>
+                  <td>States what kind of trap it is</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Difficulty</th>
+                  <td>This number is the number that the player must beat to overcome the trap</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Damage</th>
+                  <td>This number is the die used to calculate the damage if the player does not beat the difficulty</td>
+                </tr>
+            </tbody>
+          </table>
+          
+                    
+          </div>
+
+          <div id="cacheTable" class="d-none">
+            
+          <div class="text-center text-light bg-success p-1">
+            <h5>Cache Class</h5>
+            <p>
+              The Cache class is a way to label and store collections of objects
+            </p>
+          </div><br>
+
+          <table class="table">
+            <tbody>
+              <tr>
+                  <th scope="col" class="table-success">Contents</th>
+                  <td>This is an empty array to store objects</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">select()</th>
+                  <td>This method randomly selects an item from the Cache contents</td>
+                </tr>
+                
+          </tbody>
+
+          <div id="cacheJS" class="modal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-scrollable">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Cache Class JavaScript</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                  <div class="modal-body">
+        <pre></pre>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+          </table>
+
+          <button type="button" class="btn-lg btn-success d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#cacheJS">See JavaScript
+              </button>
+              <button class="btn-success btn-lg d-flex mx-auto mx-auto m-2" onclick="closeTable(cacheTable)">Close Table</button>          
+                    
+          </div>
+
+          <div id="planeTable" class="d-none">
+            
+          <div class="text-center text-light bg-success p-1">
+            <h5>Plane Class</h5>
+            <p>
+              The Plane class is a collection of Caches used to populate that specific plane
+            </p>
+          </div><br>
+
+          <table class="table">
+            <tbody>
+              <tr>
+                  <th scope="col" class="table-success">Name</th>
+                  <td>The name of the Plane</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Loot Cache</th>
+                  <td>This is a cache of all the Loot/Food/Weapons available in this Plane</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Rival Cache</th>
+                  <td>This is a cache of all the Rivals available in this Plane</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Goober Cache</th>
+                  <td>This is a cache of all the key story items in this Plane</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Trap Cache</th>
+                  <td>This is a cache of all the Traps available in this Plane</td>
+                </tr>
+                <tr>
+                  <th scope="col" class="table-success">Boss Cache</th>
+                  <td>This is a cache of all the Bosses available in this Plane</td>
+                  <tr>
+                  <th scope="col" class="table-success">Battle Order</th>
+                  <td>This is an array that keeps track of the order of turns in a battle</td>
+                </tr>
+                </tr>
+          </tbody>
+          </table>
+          
+              <button class="btn-success btn-lg d-flex mx-auto mx-auto m-2" onclick="closeTable(planeTable)">Close Table</button>
+                    
+          </div>
+
+    </div><br>
+
+
+    <div id="planes" class="container border border-dark my-2">
+      <div class="text-center text-light bg-dark p-1">
+      <h5><u>Planes</u></h5>
+      <p>
+        Now that we can create and populate Planes, here is the list of 20 planes in the world of Icosa to create.
+      </p>
+      </div><br>
+
+      <div id="planeButton" class="d-flex justify-content-center">
+      <button class="btn-secondary btn-lg" onclick="displayTable(tablePlanes)">Planes List</button>
+      </div><br>
+
+
+      <div id="tablePlanes" class="d-none">
+      <table class=" table table-secondary table-bordered table-striped text-center">
+        <thead>
+          <tr>
+            <th scope="col" class="table-dark">Plane #</th>
+            <th scope="col" class="table-dark">Plane Name</th>
+            <th scope="col" class="table-dark">Description</th>
+            <th scope="col" class="table-dark">Loot</th>        
+            <th scope="col" class="table-dark">Map</th>    
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <th>The Sole</th>
+            <td>The Sole is a mix of dying forests and grasslands with a sickly brownish red river passing by the small farming village of Sole.</td>
+            <td>Wood, Hide, Stone, Bone, Anwar Root</td>
+            <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#soleMap">Map</button></td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <th>The Cave</th>
+            <td>The Cave is a dark and stale underground region with murky pools, fungi, and minerals</td>
+            <td>Stone, Bone, Halowart, Hide, Blue Ore</td>
+            <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#caveMap">Map</button></td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <th>The Cavern</th>
+            <td>The Cavern is an expansive underground area with a large body of still water that has a softly glowing crytal pillar in the center</td>
+            <td>Stone, Halowart, Blue Ore, Blue Goo, Tar Oil</td>
+            <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#cavernMap">Map</button></td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <th>The Mines</th>
+            <td>The Mines are a collection of corridors and passageways leading deeper into darkness and dead ends</td>
+            <td>Stone, Blue Ore, Red Ore, Green Ore, Tar Oil</td>
+            <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#minesMap">Map</button></td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <th>The Woods</th>
+            <td>The Woods is a heavily forested region with small spring fed ponds dotting the landscape and home to a massive tree city</td>
+            <td>Wood, Hide, Bone, Jeewa Fruit, Green Goo</td>
+            <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#woodsMap">Map</button></td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <th>The Marsh</th>
+            <td>The Marsh is a wetland area populated with giant mushrooms and smaller mushroom villages</td>
+            <td>Snarp Root, Halowart, Blue Goo, Green Goo, Lyr Dust</td>
+            <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#marshMap">Map</button></td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <th>The Hill</th>
+            <td>The Hill is a mountainous region with precarious paths leading to new territories and loot</td>
+            <td>Stone, Flail Flower, Green Goo, Green Ore, Cling Leaf</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#hillMap">Map</button></td> -->
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <th>The Falls</th>
+            <td>The Falls is a range of brownish red cascading waterfalls intermingled with large trees, boulders, and small caves</td>
+            <td>Stone, Pinwheel Clover, Blue Goo, Blue Ore, Lyr Dust</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#fallsMap">Map</button></td> -->
+          </tr>
+          <tr>
+            <th scope="row">9</th>
+            <th>The River</th>
+            <td>The River is a wide body of thick brownish red contaminated water with the ruins of an abandoned village along the banks.</td>
+            <td>Wood, Meloon, Jeewa Fruit, Blue Goo, Blue Ore</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#riverMap">Map</button></td> -->
+          </tr>
+          <tr>
+            <th scope="row">10</th>
+            <th>The Oracle</th>
+            <td>The Oracle is an enormous hill with a crumbling temple oozing a thick brownish red liquid to form the source of the contaminated river.</td>
+            <td>Drogon, Green Ore, Green Goo, Lyr Dust, Sapphire</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#oracleMap">Map</button></td> -->
+          </tr>
+          <tr>
+            <th scope="row">11</th>
+            <th>The Oasis</th>
+            <td>The Oasis is a bustling bazaar trading post in the middle of a sand dune desert.</td>
+            <td>Sungrain, Dry Dust, Bone, Tar Oil, Anwar Root</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#oasisMap">Map</button></td> -->
+          </tr>
+          <tr>
+            <th scope="row">12</th>
+            <th>The Chasm</th>
+            <td>The Chasm is a canyon with mysterious ancient cliff dwellings built into the rock face.</td>
+            <td>Stone, Redvine, Red Ore, Red Goo, Dry Dust</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#chasmMap">Map</button></td> -->
+          </tr>
+          <tr>
+            <th scope="row">13</th>
+            <th>The Lair</th>
+            <td>The Lair is a cavern of many corridors with a wide central area covered in dried blood and death.</td>
+            <td>Drogon, Red Goo, Ruby, Red Ore, Char Bean</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#lairMap">Map</button></td> -->
+          </tr>
+          <tr>
+            <th scope="row">14</th>
+            <th>The Catacombs</th>
+            <td>The Catacombs are a maze of passages, traps, and treasures</td>
+            <td>Bone, Green Goo, Red Goo, Lava Leaf, Halowart</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#catacombsMap">Map</button></td> -->
+          </tr>
+          <tr>
+            <th scope="row">15</th>
+            <th>The Ruins</th>
+            <td>The Ruins are the remains of a once glorious city. Trees, vines, and wildlife have reclaimed this former bastion of civilization.</td>
+            <td>Lacklace, Stone, Blue Ore, Green Ore, Dry Dust</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#ruinsMap">Map</button></td> -->
+          </tr>
+          <tr>
+            <th scope="row">16</th>
+            <th>The Volcano</th>
+            <td>The Volcano is a mountainous region with lava flows and pools along with a few tiny trees sprouting out of the freshly cleansed earth.</td>
+            <td>Char Bean, Lava Leaf, Red Ore, Black Ore, Dry Dust</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#volcanoMap">Map</button></td> -->
+          </tr>
+          <tr>
+            <th scope="row">17</th>
+            <th>The Scorch</th>
+            <td>The Scorch is a dusty red, parched region with blackened burnt trees and boulders spanning the landscape.</td>
+            <td>Char Bean, Red Ore, Dry Dust, Stone, Redvine</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#scorchMap">Map</button></td> -->
+          </tr>
+          <tr>
+            <th scope="row">18</th>
+            <th>The Waste</th>
+            <td>The Waste is crag of black rocks and pale white trees and bushes. The lack of color is deafening</td>
+            <td>Black Dust, Eether Branch, Black Ore, Black Goo, Black Diamond</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#wasteMap">Map</button></td> -->
+          </tr>
+          <tr>
+            <th scope="row">19</th>
+            <th>The Death</th>
+            <td>The Death is a stagnant pit where the corpses of all who have fallen rise to corrupt the living. The earth has a sour green tinge with moldy grass and trees throughout the landscape.</td>
+            <td>Bone, Black Dust, Black Diamond, Green Goo, Black Goo</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#deathMap">Map</button></td> -->
+          </tr>
+          <tr>
+            <th scope="row">20</th>
+            <th>The Castle</th>
+            <td>The Castle is home to the massive Crit Castle, currently inhabited by Feyl, the source of all the blight and unbalance of Icosa.</td>
+            <td>Black Ore, Black Dust, Lyr Dust, Black Diamond, Sapphire</td>
+            <!-- <td><button type="button" class="btn-lg btn-secondary d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#castleMap">Map</button></td> -->
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn-secondary btn-lg d-flex mx-auto mx-auto m-2" onclick="closeTable(tablePlanes)">Close Table</button>
+      </div>
+      </div>
+
+    <div id="soleMap" class="modal" tabindex="-1">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-light">
+        <h5 class="modal-title">The Sole</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img src="https://www.dropbox.com/s/8kfayeqaa271goz/The%20Sole.png?raw=1">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+    <div id="tier1" class="container">
+      <h5 class="text-center"><u>Tier 1</u></h5>
+		<p style="text-indent: 50px">
+      The first tier of The Icosahedron is playing through the story of Icosa. The player starts the game at a shabby campsite in The Sole. In one direction they see a dreary farm in the distance next to a foul looking brownish red river. In another direction, they see a dying forest with a plume of smoke coming from the middle. The player makes choices and solves puzzles to help the citizens and access new areas. There are 20 planes in Icosa, and while the player can complete the planes in order from 1 to 20, they are not specifically connected in numerical order. Each plane connects to three other planes, for example: Plane 1: The Sole connects to Plane 2: The Cave, Plane 5: The Woods, and Plane 8: The Falls. This means the player can access Plane 8, as long as they complete the requirements to do so, from the first Plane. This creates many different paths and options to reach the Crit Castle and save Icosa.
+    </p>
+    </div>
+
+    <div id="roles" class="container">
+      <h5 class="text-center"><u>Roles</u></h5>
+      <div><br>
+        <p>To start the game, the player must choose a hero to play as. They can be a Champion, Maverick, Soul Seer, or Whisper. Click below to see the stats</p><br>
+
+        <div id="rolesButton" class="d-flex justify-content-center">
+      <button class="btn-secondary btn-lg" onclick="displayTable(roleTable)">Roles</button>
+      </div><br>
+
+
+      </div>
+
+      <div id="roleTable" class="d-none">
+        <div id="rolesButton" class="d-flex justify-content-center">
+      <button class="btn-secondary btn-lg" onclick="closeTable(roleTable)">Close Table</button>
+      </div><br>
+      <div class="card border-2 border-warning mx-auto" style="width: 500px">
+  <div class="row g-0 mx-auto">
+    <div class="col-4 text-center mx-auto">
+      <h5 class="card-title"><u>Champion</u></h5>
+      <div class="bg-warning ms-2 p-2" style="height: 310px">
+      <img src="https://www.dropbox.com/s/a7o584nfvrmv2cg/champion.png?raw=1" class="img-fluid rounded-start mx-auto" style="height: 200px" alt="...">
+      <h6 class="card-text">A warrior infused with magical power to strike down rivals and heal allies</h6>
+    </div>
+    </div>
+    
+    <div class="col-8 mx-auto">
+        <h5 class="card-title text-center px-1"><u>Abilities</u></h5>
+        <div class="m-1 p-1 pt-3" style="font-size: 15px">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-warning"><img src="https://www.dropbox.com/s/07d169jf2zoyt6y/overpower.png?raw=1" style="width: 25px"><b> Overpower :</b> A powerful strike that pushes rivals back doing 1d8 + Attack damage</li>
+            <li class="list-group-item list-group-item-warning">
+              <img src="https://www.dropbox.com/s/y2awzi650oekwjf/Radiant%20Strike%20%281%29.png?raw=1" style="width: 25px">
+              <b> Radiant Strike :</b> A bright flash of light burns rivals doing 2d6 + Magic damage
+              
+              </li>
+            <li class="list-group-item list-group-item-warning">
+              <img src="https://www.dropbox.com/s/e5hlw4n9vrpakwg/Shield%20Slam.png?raw=1" style="width: 25px"><b> Shield Slam :</b> Quickly slam a rival with a shield doing 1d4 + Speed damage</li>
+            <li class="list-group-item list-group-item-warning"><img src="https://www.dropbox.com/s/az27wiwrwx6pho8/Heal%201.png?raw=1" style="width: 25px"><b> Heal :</b> Restore life equal to 1d6 + Charm</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+    <h5 class="card-title border-warning border-bottom">Stats</h5>
+  </div>
+  <div class="row g-0">
+    <div class="card-body col-2">
+      <table id="champiTable" class="table table-warning table-bordered text-center" style="font-size: 12px">
+        <thead>
+          <tr>
+            <td scope="col">Life</td>
+            <td scope="col">Attack</td>
+            <td scope="col">Defense</td>
+            <td scope="col">Magic</td>
+            <td scope="col">Speed</td>
+            <td scope="col">Charm</td>
+            <td scope="col">Equipment</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>42</th>
+            <th>3</th>
+            <th>15</th>
+            <th>3</th>
+            <th>1</th>
+            <th>1</th>
+            <th>Broadsword & Shield</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+  <div class="card-footer d-grid gap-2">
+          <button onclick="createChampion()" class="btn btn-warning">Choose Champion</button>
+          </div>
+  </div>
+</div>
+<br>
+
+<div class="card border-2 border-success mx-auto" style="width: 500px">
+  <div class="row g-0 mx-auto">
+    <div class="col-4 text-center mx-auto">
+      <h5 class="card-title"><u>Maverick</u></h5>
+      <div class="bg-success ms-2 p-2" style="height: 310px">
+      <img src="https://www.dropbox.com/s/aqhdnu63ad2dafa/Maverick.png?raw=1" class="img-fluid rounded-start" style="height: 200px" alt="...">
+      <h6 class="card-text">A quick and agile archer able to dominate rivals from a distance</h6>
+    </div>
+    </div>
+    
+    <div class="col-8 mx-auto">
+        <h5 class="card-title text-center px-1"><u>Abilities</u></h5>
+        <div class="m-1 p-1 pt-3" style="font-size: 14px">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-success"><img src="https://www.dropbox.com/s/nwfpjqt3xuii4ul/Pierce.png?raw=1" style="width: 25px"><b> Pierce :</b> Expertly aimed shot that penetrates rival defenses doing 1d8 + Attack damage</li>
+            <li class="list-group-item list-group-item-success">
+              <img src="https://www.dropbox.com/s/fgtb5taig4ytzi4/SoulShot.png?raw=1" style="width: 25px">
+              <b> Soul Shot :</b> Fires an srrow infused with spiritual energy doing 1d6 + Magic damage
+              </li>
+            <li class="list-group-item list-group-item-success">
+              <img src="https://www.dropbox.com/s/fck9l660b4hwre2/multishot%20%281%29.png?raw=1" style="width: 25px"><b> Multi-Shot :</b> Quickly shoot two arrows with deadly accuracy doing 2d6 + Speed damage</li>
+            <li class="list-group-item list-group-item-success"><img src="https://www.dropbox.com/s/h97frytbgln65py/bola.png?raw=1" style="width: 25px"><b> Bolo :</b> Tangles rival doing 1d4 + Charm damage and reducing rival speed by 1</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+    <h5 class="card-title border-success border-bottom">Stats</h5>
+  </div>
+  <div class="row g-0">
+    <div class="card-body col-2">
+      <table id="maverTable" class="table table-success table-bordered text-center" style="font-size: 12px">
+        <thead>
+          <tr>
+            <td scope="col">Life</td>
+            <td scope="col">Attack</td>
+            <td scope="col">Defense</td>
+            <td scope="col">Magic</td>
+            <td scope="col">Speed</td>
+            <td scope="col">Charm</td>
+            <td scope="col">Equipment</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>37</th>
+            <th>2</th>
+            <th>14</th>
+            <th>1</th>
+            <th>3</th>
+            <th>2</th>
+            <th>Longbow</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+  <div class="card-footer d-grid gap-2">
+          <button onclick="createMaverick()" class="btn btn-success">Choose Maverick</button>
+          </div>
+  </div>
+</div>
+<br>
+
+<div class="card border-2 border-info mx-auto" style="width: 500px">
+  <div class="row g-0 mx-auto">
+    <div class="col-4 text-center mx-auto">
+      <h5 class="card-title"><u>Soul Seer</u></h5>
+      <div class="bg-info ms-2 p-2" style="height: 310px">
+      <img src="https://www.dropbox.com/s/gzim3rt0s9jdncy/soulseer.png?raw=1" class="img-fluid rounded-start" style="height: 200px" alt="...">
+      <h6 class="card-text">A being surging with psychic power used to terrorize their rivals</h6>
+    </div>
+    </div>
+    
+    <div class="col-8 mx-auto">
+        <h5 class="card-title text-center px-1"><u>Abilities</u></h5>
+        <div class="m-1 p-1 pt-3" style="font-size: 15px">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info"><img src="https://www.dropbox.com/s/nohvkmuwfhuql0j/choke.png?raw=1" style="width: 25px"><b> Psylance :</b> Psychically close a rivals airway doing 1d6 + Attack damage</li>
+            <li class="list-group-item list-group-item-info">
+              <img src="https://www.dropbox.com/s/3c342epm7n9rd1j/soulsyphon.png?raw=1" style="width: 25px">
+              <b> Soul Syphon :</b> Drains rival life to restore your own doing 1d4 + Magic damage and healing</li>
+            <li class="list-group-item list-group-item-info">
+              <img src="https://www.dropbox.com/s/c4wvxj1n1i51kgo/mindspike.png?raw=1" style="width: 25px"><b> Mind-Spike :</b> A psychic blast to a rival's mind doing 1d4 + Speed damage</li>
+            <li class="list-group-item list-group-item-info"><img src="https://www.dropbox.com/s/rzwevhin0ict1u3/explosion.png?raw=1" style="width: 25px"><b> Explosion :</b> Concussive blast that does 2d8 + Charm damage</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+    <h5 class="card-title border-info border-bottom">Stats</h5>
+  </div>
+  <div class="row g-0">
+    <div class="card-body col-2">
+      <table id="soulsTable" class="table table-info table-bordered text-center" style="font-size: 12px">
+        <thead>
+          <tr>
+            <td scope="col">Life</td>
+            <td scope="col">Attack</td>
+            <td scope="col">Defense</td>
+            <td scope="col">Magic</td>
+            <td scope="col">Speed</td>
+            <td scope="col">Charm</td>
+            <td scope="col">Equipment</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>33</th>
+            <th>1</th>
+            <th>13</th>
+            <th>3</th>
+            <th>2</th>
+            <th>2</th>
+            <th>Staff</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+  <div class="card-footer d-grid gap-2">
+          <button onclick="createSoulSeer()" class="btn btn-info">Choose Soul Seer</button>
+          </div>
+  </div>
+</div>
+<br>
+
+<div class="card border-2 border-secondary mx-auto" style="width: 500px">
+  <div class="row g-0 mx-auto">
+    <div class="col-4 text-center mx-auto">
+      <h5 class="card-title"><u>Whisper</u></h5>
+      <div class="bg-secondary ms-2 p-2" style="height: 310px">
+      <img src="https://www.dropbox.com/s/uqmw1pa5h6yes7i/Whisper.png?raw=1" class="img-fluid rounded-start" style="height: 200px" alt="...">
+      <h6 class="card-text">A Silent stalker that subdues rivals from the shadows</h6>
+    </div>
+    </div>
+    
+    <div class="col-8 mx-auto">
+        <h5 class="card-title text-center px-1"><u>Abilities</u></h5>
+        <div class="m-2" style="font-size: 14px">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-secondary"><img src="https://www.dropbox.com/s/v28ly3gyyeilpa0/deathstrike.png?raw=1" style="width: 25px"><b> Death Strike :</b> Powerful and precise attack doing 1d8 + Attack damage</li>
+            <li class="list-group-item list-group-item-secondary">
+              <img src="https://www.dropbox.com/s/oi1e2rctklwcc2s/darkness.png?raw=1" style="width: 25px">
+              <b> Darkness :</b> Attack to the rival's eyes doing 1d4 + Magic damage and reducing rival Attack by 1</li>
+            <li class="list-group-item list-group-item-secondary">
+              <img src="https://www.dropbox.com/s/s5f21pj3k4vsggu/doublestrike.png?raw=1" style="width: 25px"><b> Double-Strike :</b> Two quick attacks before the rival can even blink doing 2d6 + Speed damage</li>
+            <li class="list-group-item list-group-item-secondary"><img src="https://www.dropbox.com/s/f3kyeokxos0smf0/shadowstep.png?raw=1" style="width: 25px"><b> Shadow-Strike :</b> Silently appear behind rival to stab them in the back doing 1d8 + Charm damage</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+    <h5 class="card-title border-secondary border-bottom">Stats</h5>
+  </div>
+  <div class="row g-0">
+    <div class="card-body col-2">
+      <table id="whispTable" class="table table-secondary table-bordered text-center" style="font-size: 12px">
+        <thead>
+          <tr>
+            <td scope="col">Life</td>
+            <td scope="col">Attack</td>
+            <td scope="col">Defense</td>
+            <td scope="col">Magic</td>
+            <td scope="col">Speed</td>
+            <td scope="col">Charm</td>
+            <td scope="col">Equipment</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>35</th>
+            <th>3</th>
+            <th>14</th>
+            <th>1</th>
+            <th>2</th>
+            <th>2</th>
+            <th>Daggers</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+  <div class="card-footer d-grid gap-2">
+          <button onclick="createWhisper()" class="btn btn-secondary">Choose Whisper</button>
+          </div>
+  </div>
+</div>
+<br>
+    <div id="rolesButton" class="d-flex justify-content-center">
+      <button class="btn-secondary btn-lg" onclick="closeTable(roleTable)">Close Table</button>
+      </div><br>
+      </div>
+    </div>
+
+    <div id="tier2">
+      <h5 class="text-center"><u>Tier 2</u></h5>
+		<p style="text-indent: 50px">
+      Defeating Feyl and stopping the corruption of Icosa was just the beginning. Now it is time to rule and rebuild. Because of the devistation brought by Feyl, the inhabitants of Icosa were very near extinction and are in need of compassionate leadership. Now the player must send new heroes out into the Planes to collect materials and recruits to start improving and repopulating the Planes as new threats are awakened in the depths of Icosa to challenge the shift of power. Once enough of Icosa is restored, it's secrets are unlocked revealing that this planet is actually a small moon orbiting another world and that the Crit Castle has a mechanism to open a portal to this newly discovered celestial sphere. Now the player can take their hero or create new heroes to team up with other players to explore this new world of Talus in order to prevent the summoning of a being capable of tearing apart the fabric of this universe. This allows players to create specialized heroes with more unique skills to create unique groups of players going on missions together. The design document for this tier of the game is called I Crit You Not, and I actually wrote it before writing Icosahedron, so some things are the same and others have been changed, but it has the premise laid out to show the foundation. The world of Talus and the conflicts involved are detailed in a story I created as a dungeon master for a group of friends to play through over the course of two years.
+    </p>
+    </div>
+
+    <div class="container d-flex my-4">
+      <a href="https://docs.google.com/document/d/1cYunKwMhVwrVNuVOU2hnWCQ4YHZ70-Dr/edit?usp=sharing&ouid=111977636312284934106&rtpof=true&sd=true" class="mx-auto"><button type="button" class="btn btn-lg btn-outline-dark">
+        I Crit You Not: Game Design Document</button></a>
+    </div>
+    <div class="container d-flex my-4">
+      
+      <a href="https://docs.google.com/document/d/1Sbn0zG-4x-RJx2pA_kvlArVrSIMK9Vb1/edit?usp=sharing&ouid=111977636312284934106&rtpof=true&sd=true" class="mx-auto"><button type="button" class="btn btn-lg btn-outline-dark">
+        Terror on Talus: Epic Story</button></a>
+    </div>
+    
+
+    
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
