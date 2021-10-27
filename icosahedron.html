@@ -92,14 +92,14 @@
 			adds the thrill and frustration of chance with every action. To apply this, we made a chart of <b>"Calamities" and "Enhancements"</b> that can be determined with the roll of a D20.
   </h4>
   <div id="calamityButton" class="d-flex justify-content-center">
-      <button class="btn-secondary btn-lg" onclick="displayIt(calamityTable)">Calamities and Enhancements Table</button>
+      <button class="btn-secondary btn-lg m-2 p-2" onclick="displayIt(calamityTable)">Calamities and Enhancements Table</button>
       </div><br>
   </div>
 
 
 <div id="calamityTable" style="display:none" class="container overflow-auto">
   <div class="d-flex justify-content-center">
-  <button class="btn-secondary btn-lg" onclick="displayIt(calamityTable)">Close Table</button>
+  <button class="btn-secondary btn-lg m-2 p-2" onclick="displayIt(calamityTable)">Close Table</button>
       </div>
       <h5>Calamities and Enhancements carry over and stack each level. Character stats can not go below -2 and cannot go above 8.</h5>
       
@@ -215,11 +215,11 @@
         </tbody>
       </table>
       <div class="d-flex justify-content-center">
-  <button class="btn-secondary btn-lg" onclick="closeTable(calamityTable)">Close Table</button>
+  <button class="btn-secondary btn-lg m-2 p-2" onclick="displayIt(calamityTable)">Close Table</button>
       </div>
     </div>
     <h4 class="lead">
-    As stated in the <a href="#intro">introduction</a>, an icosahedron is made up of 20 sides, or planes, and we wondered what it would be like if each plane was essentially it's own country with unique terrain, creatures, and puzzles that connects to 3 other planes with their own unique features. We then created classes to create the creatures to populate these planes. One detail we are striving for is to have all the beings be gender neutral, and so wanted to start with what a general "being" would consist of. We started with the Being class and then branched off from that with Hero and Rival; then created Loot, Food, Weapon, and Ability classes to create objects to populate some of the fields of Heroes and Rivals. Next we created the Cache class which we used to create arrays of objects. Now we can create a Plane class comprised of seperate Caches for Rivals, Loot, Food, Traps, etc., that can be easily populated with as many objects as the Plane builder wants and can then be selected directly or randomly through Math.random like a dice roll. Now we have a framework to create any type of creature we want with any type of stats, along with any type of object to then create as many levels as we want, each populated with unique creatures and objects. Click the classes below to see the fields and methods used for each class.
+    As stated in the introduction, an icosahedron is made up of 20 sides, or planes, and we wondered what it would be like if each plane was essentially it's own country with unique terrain, creatures, and puzzles that connects to 3 other planes with their own unique features. We then created classes to create the creatures to populate these planes. One detail we are striving for is to have all the beings be gender neutral, and so wanted to start with what a general "being" would consist of. We started with the Being class and then branched off from that with Hero and Rival; then created Loot, Food, Weapon, and Ability classes to create objects to populate some of the fields of Heroes and Rivals. Next we created the Cache class which we used to create arrays of objects. Now we can create a Plane class comprised of seperate Caches for Rivals, Loot, Food, Traps, etc., that can be easily populated with as many objects as the Plane builder wants and can then be selected directly or randomly through Math.random like a dice roll. Now we have a framework to create any type of creature we want with any type of stats, along with any type of object to then create as many levels as we want, each populated with unique creatures and objects. Click the classes below to see the fields and methods used for each class.
     </h4>
 
     <div id="classButtons" class="container border border-success p-2">
@@ -242,27 +242,10 @@
        
       </ul>
 
-      <!-- <div class="d-flex list-group list-group-horizontal justify-content-center mx-auto">
-            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayIt(beingTable)">Being</h5>
-            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayIt(heroTable)">Hero</h5>
-            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayIt(rivalTable)">Rival</h5>
-            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayIt(bossTable)">Boss</h5>
-            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayIt(weaponTable)">Weapon</h5>
-            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayIt(abilityTable)">Ability</h5>
-            
-            </div>
-            <div class="d-flex list-group list-group-horizontal justify-content-center">
-            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayIt(lootTable)">Loot</h5>
-            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayIt(foodTable)">Food</h5>
-            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayIt(gooberTable)">Goober</h5>            
-            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayIt(trapTable)">Trap</h5>
-            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayIt(cacheTable)">Cache</h5>
-            <h5 class="list-group-item list-group-item-success btn btn-sm fw-bold" onclick="displayIt(planeTable)">Plane</h5>
-            
-        </div> -->
+      
       </div>
       <div>
-        <a href="https://replit.com/@N8ofBase/IcosahedronTest-1#index.js">
+        <a class="text-decoration-none" href="https://replit.com/@N8ofBase/IcosahedronTest-1#index.js">
         <button class="btn-success btn-lg d-flex mx-auto m-2">Click here to see all JavaScript and Unit Tests</button></a>
       </div>
         
@@ -836,21 +819,21 @@ if(this.quantity > 0) {
     <img src="https://www.dropbox.com/s/74a8hmu0ltvr2co/rainbowdiv.png?raw=1" class="img-fluid">
   </div>
 
-<div id="Planes" style="display:block" class="container mx-auto px-3">
+<div id="planes" style="display:block" class="container mx-auto px-3">
   <div class="row text-center">
   <h1>Planes</h1>
   <h4 class="lead">
     Now that we can create and populate Planes, here is the list of 20 planes in the world of Icosa to create.
-  </h4>
+  </h4><br>
 
-  <div id="planeButton" class="d-flex justify-content-center">
+  <div id="planeButton" class="d-flex justify-content-center m-2">
       <button class="btn-secondary btn-lg" onclick="displayIt(tablePlanes)">Planes List</button>
       </div><br>
 
 
       <div id="tablePlanes" style="display:none">
         <div id="planeButton" class="d-flex justify-content-center">
-      <button class="btn-secondary btn-lg" onclick="displayIt(tablePlanes)">Close</button>
+      <button class="btn-secondary btn-lg m-2" onclick="displayIt(tablePlanes)">Close</button>
       </div>
       <table class=" table table-secondary table-bordered table-striped text-center">
         <thead>
