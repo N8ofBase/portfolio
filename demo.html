@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html class="h-100">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>I Crit You Not Demo</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	 crossorigin="anonymous">
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="d-flex flex-column h-100">
+
+  <main class="flex-shrink-0">
+	<!-- input that stores the players name for their hero -->
+	<div id="playerName" class="container bg-dark border border-danger border-3 rounded-pill text-center text-white pb-4">
+		<label for="name"></label>
+  <h5><u>Name your Hero</u></h5>
+  <input class="border border-danger rounded-pill" type="text" id="name" value='' placeholder="Hero Name">
+  </div><br>
+<div class="row g-0 text-center">
+  <div id="roleButton" class="d-grid gap-2 mx-auto" style="max-width: 300px; display: block">
+          <button class="btn-secondary btn-lg my-4" onclick="displayRoles()">Choose Your Role</button>
+          </div>
+  </div>
+
+
+<div class="container center mx-auto" id="roles" style="display: none">
+  
+<div class="card border-2 border-warning mx-auto" style="width: 500px">
+  <div class="row g-0 mx-auto">
+    <div class="col-4 text-center mx-auto">
+      <h5 class="card-title"><u>Champion</u></h5>
+      <div class="bg-warning ms-2 p-2" style="height: 310px">
+      <img src="https://www.dropbox.com/s/a7o584nfvrmv2cg/champion.png?raw=1" class="img-fluid rounded-start mx-auto" style="height: 200px" alt="...">
+      <h6 class="card-text">A warrior infused with magical power to strike down rivals and heal allies</h6>
+    </div>
+    </div>
+    
+    <div class="col-8 mx-auto">
+        <h5 class="card-title text-center px-1"><u>Abilities</u></h5>
+        <div class="m-1 p-1 pt-3" style="font-size: 15px">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-warning"><img src="https://www.dropbox.com/s/07d169jf2zoyt6y/overpower.png?raw=1" style="width: 25px"><b> Overpower :</b> A powerful strike that pushes rivals back doing 1d8 + Attack damage</li>
+            <li class="list-group-item list-group-item-warning">
+              <img src="https://www.dropbox.com/s/y2awzi650oekwjf/Radiant%20Strike%20%281%29.png?raw=1" style="width: 25px">
+              <b> Radiant Strike :</b> A bright flash of light burns rivals doing 2d6 + Magic damage
+              
+              </li>
+            <li class="list-group-item list-group-item-warning">
+              <img src="https://www.dropbox.com/s/e5hlw4n9vrpakwg/Shield%20Slam.png?raw=1" style="width: 25px"><b> Shield Slam :</b> Quickly slam a rival with a shield doing 1d4 + Speed damage</li>
+            <li class="list-group-item list-group-item-warning"><img src="https://www.dropbox.com/s/az27wiwrwx6pho8/Heal%201.png?raw=1" style="width: 25px"><b> Heal :</b> Restore life equal to 1d6 + Charm</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+    <h5 class="card-title border-warning border-bottom">Stats</h5>
+  </div>
+  <div class="row g-0">
+    <div class="card-body col-2">
+      <table id="champiTable" class="table table-warning table-bordered text-center" style="font-size: 12px">
+        <thead>
+          <tr>
+            <td scope="col">Life</td>
+            <td scope="col">Attack</td>
+            <td scope="col">Defense</td>
+            <td scope="col">Magic</td>
+            <td scope="col">Speed</td>
+            <td scope="col">Charm</td>
+            <td scope="col">Equipment</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>42</th>
+            <th>3</th>
+            <th>15</th>
+            <th>3</th>
+            <th>1</th>
+            <th>1</th>
+            <th>Broadsword & Shield</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+  <div class="card-footer d-grid gap-2">
+          <button onclick="createChampion()" class="btn btn-warning">Choose Champion</button>
+          </div>
+  </div>
+</div>
+<br>
+
+<div class="card border-2 border-success mx-auto" style="width: 500px">
+  <div class="row g-0 mx-auto">
+    <div class="col-4 text-center mx-auto">
+      <h5 class="card-title"><u>Maverick</u></h5>
+      <div class="bg-success ms-2 p-2" style="height: 310px">
+      <img src="https://www.dropbox.com/s/aqhdnu63ad2dafa/Maverick.png?raw=1" class="img-fluid rounded-start" style="height: 200px" alt="...">
+      <h6 class="card-text">A quick and agile archer able to dominate rivals from a distance</h6>
+    </div>
+    </div>
+    
+    <div class="col-8 mx-auto">
+        <h5 class="card-title text-center px-1"><u>Abilities</u></h5>
+        <div class="m-1 p-1 pt-3" style="font-size: 14px">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-success"><img src="https://www.dropbox.com/s/nwfpjqt3xuii4ul/Pierce.png?raw=1" style="width: 25px"><b> Pierce :</b> Expertly aimed shot that penetrates rival defenses doing 1d8 + Attack damage</li>
+            <li class="list-group-item list-group-item-success">
+              <img src="https://www.dropbox.com/s/fgtb5taig4ytzi4/SoulShot.png?raw=1" style="width: 25px">
+              <b> Soul Shot :</b> Fires an srrow infused with spiritual energy doing 1d6 + Magic damage
+              </li>
+            <li class="list-group-item list-group-item-success">
+              <img src="https://www.dropbox.com/s/fck9l660b4hwre2/multishot%20%281%29.png?raw=1" style="width: 25px"><b> Multi-Shot :</b> Quickly shoot two arrows with deadly accuracy doing 2d6 + Speed damage</li>
+            <li class="list-group-item list-group-item-success"><img src="https://www.dropbox.com/s/h97frytbgln65py/bola.png?raw=1" style="width: 25px"><b> Bola :</b> Tangles rival doing 1d4 + Charm damage and reducing rival speed by 1</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+    <h5 class="card-title border-success border-bottom">Stats</h5>
+  </div>
+  <div class="row g-0">
+    <div class="card-body col-2">
+      <table id="maverTable" class="table table-success table-bordered text-center" style="font-size: 12px">
+        <thead>
+          <tr>
+            <td scope="col">Life</td>
+            <td scope="col">Attack</td>
+            <td scope="col">Defense</td>
+            <td scope="col">Magic</td>
+            <td scope="col">Speed</td>
+            <td scope="col">Charm</td>
+            <td scope="col">Equipment</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>37</th>
+            <th>2</th>
+            <th>14</th>
+            <th>1</th>
+            <th>3</th>
+            <th>2</th>
+            <th>Longbow</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+  <div class="card-footer d-grid gap-2">
+          <button onclick="createMaverick()" class="btn btn-success">Choose Maverick</button>
+          </div>
+  </div>
+</div>
+<br>
+
+<div class="card border-2 border-info mx-auto" style="width: 500px">
+  <div class="row g-0 mx-auto">
+    <div class="col-4 text-center mx-auto">
+      <h5 class="card-title"><u>Soul Seer</u></h5>
+      <div class="bg-info ms-2 p-2" style="height: 310px">
+      <img src="https://www.dropbox.com/s/gzim3rt0s9jdncy/soulseer.png?raw=1" class="img-fluid rounded-start" style="height: 200px" alt="...">
+      <h6 class="card-text">A being surging with psychic power used to terrorize their rivals</h6>
+    </div>
+    </div>
+    
+    <div class="col-8 mx-auto">
+        <h5 class="card-title text-center px-1"><u>Abilities</u></h5>
+        <div class="m-1 p-1 pt-3" style="font-size: 15px">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info"><img src="https://www.dropbox.com/s/nohvkmuwfhuql0j/choke.png?raw=1" style="width: 25px"><b> Psylance :</b> Psychically close a rivals airway doing 1d6 + Attack damage</li>
+            <li class="list-group-item list-group-item-info">
+              <img src="https://www.dropbox.com/s/3c342epm7n9rd1j/soulsyphon.png?raw=1" style="width: 25px">
+              <b> Soul Syphon :</b> Drains rival life to restore your own doing 1d4 + Magic damage and healing</li>
+            <li class="list-group-item list-group-item-info">
+              <img src="https://www.dropbox.com/s/c4wvxj1n1i51kgo/mindspike.png?raw=1" style="width: 25px"><b> Mind-Spike :</b> A psychic blast to a rival's mind doing 1d4 + Speed damage</li>
+            <li class="list-group-item list-group-item-info"><img src="https://www.dropbox.com/s/rzwevhin0ict1u3/explosion.png?raw=1" style="width: 25px"><b> Explosion :</b> Concussive blast that does 2d8 + Charm damage</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+    <h5 class="card-title border-info border-bottom">Stats</h5>
+  </div>
+  <div class="row g-0">
+    <div class="card-body col-2">
+      <table id="soulsTable" class="table table-info table-bordered text-center" style="font-size: 12px">
+        <thead>
+          <tr>
+            <td scope="col">Life</td>
+            <td scope="col">Attack</td>
+            <td scope="col">Defense</td>
+            <td scope="col">Magic</td>
+            <td scope="col">Speed</td>
+            <td scope="col">Charm</td>
+            <td scope="col">Equipment</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>33</th>
+            <th>1</th>
+            <th>13</th>
+            <th>3</th>
+            <th>2</th>
+            <th>2</th>
+            <th>Staff</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+  <div class="card-footer d-grid gap-2">
+          <button onclick="createSoulSeer()" class="btn btn-info">Choose Soul Seer</button>
+          </div>
+  </div>
+</div>
+<br>
+
+<div class="card border-2 border-secondary mx-auto" style="width: 500px">
+  <div class="row g-0 mx-auto">
+    <div class="col-4 text-center mx-auto">
+      <h5 class="card-title"><u>Whisper</u></h5>
+      <div class="bg-secondary ms-2 p-2" style="height: 310px">
+      <img src="https://www.dropbox.com/s/uqmw1pa5h6yes7i/Whisper.png?raw=1" class="img-fluid rounded-start" style="height: 200px" alt="...">
+      <h6 class="card-text">A Silent stalker that subdues rivals from the shadows</h6>
+    </div>
+    </div>
+    
+    <div class="col-8 mx-auto">
+        <h5 class="card-title text-center px-1"><u>Abilities</u></h5>
+        <div class="m-2" style="font-size: 14px">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-secondary"><img src="https://www.dropbox.com/s/v28ly3gyyeilpa0/deathstrike.png?raw=1" style="width: 25px"><b> Death Strike :</b> Powerful and precise attack doing 1d8 + Attack damage</li>
+            <li class="list-group-item list-group-item-secondary">
+              <img src="https://www.dropbox.com/s/oi1e2rctklwcc2s/darkness.png?raw=1" style="width: 25px">
+              <b> Darkness :</b> Attack to the rival's eyes doing 1d4 + Magic damage and reducing rival Attack by 1</li>
+            <li class="list-group-item list-group-item-secondary">
+              <img src="https://www.dropbox.com/s/s5f21pj3k4vsggu/doublestrike.png?raw=1" style="width: 25px"><b> Double-Strike :</b> Two quick attacks before the rival can even blink doing 2d6 + Speed damage</li>
+            <li class="list-group-item list-group-item-secondary"><img src="https://www.dropbox.com/s/f3kyeokxos0smf0/shadowstep.png?raw=1" style="width: 25px"><b> Shadow-Strike :</b> Silently appear behind rival to stab them in the back doing 1d8 + Charm damage</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+    <h5 class="card-title border-secondary border-bottom">Stats</h5>
+  </div>
+  <div class="row g-0">
+    <div class="card-body col-2">
+      <table id="whispTable" class="table table-secondary table-bordered text-center" style="font-size: 12px">
+        <thead>
+          <tr>
+            <td scope="col">Life</td>
+            <td scope="col">Attack</td>
+            <td scope="col">Defense</td>
+            <td scope="col">Magic</td>
+            <td scope="col">Speed</td>
+            <td scope="col">Charm</td>
+            <td scope="col">Equipment</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>35</th>
+            <th>3</th>
+            <th>14</th>
+            <th>1</th>
+            <th>2</th>
+            <th>2</th>
+            <th>Daggers</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+  <div class="card-footer d-grid gap-2">
+          <button onclick="createWhisper()" class="btn btn-secondary">Choose Whisper</button>
+          </div>
+  </div>
+</div>
+<br>
+
+</div>
+ </div>
+</div>
+
+  
+
+<div class="container text-center">
+  <div class="row">
+    
+    <div id="rivalBar" class="col-8 align-self-center mx-auto">
+      <img style="max-width: 250px" class="w-100">
+    </div>
+    <div id="rivalLog" class="col-12 align-self-center">rival log</div>
+  </div>
+  <div class="row align-items-end justify-content-start">
+    <div id="heroLog" class="col-12 align-self-center">hero log</div>
+  </div>
+</div>
+
+  </main>
+  <!-- Hero Bars contain stats and abilities -->
+   <div id="heroBar" class="container pb-1 align-self-end" style="display: none">
+      
+    <div id="heroCard" class="card mx-auto border border-dark border-4 bg-warning" style="max-width: 600px">
+      <div class="card-header text-dark fw-bold text-center border border-bottom border-dark" id="heroName"></div>
+      <div class="card-body p-0">
+      <div class="row w-100 mx-auto">
+        <div class="col border border-dark mx-auto" style="max-width: 110px">
+      
+        
+      <img id="heroHead" src="https://www.dropbox.com/s/a9pj9eomelt941u/championhead.png?raw=1" class="img-fluid rounded-start mt-2" alt="..." style="max-width: 100px; max-height: 100px">
+        </div>
+    
+
+  <div class="col align-self-start text-center">
+    <div id="heroStats" class="row align-items-start list-group-item-warning">
+      <div class="col border border-dark align-self-start" style="max-height:60px; max-width: 60px">
+        <p id="heroLifeTxt" class="bg-warning border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Life</p>
+        <div class="row align-items-start">
+          <div class="col">
+            <p id="heroLife" class="fw-bold"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col border border-dark align-self-start" style="max-height:60px; max-width: 85px">
+        <p id="heroAttackTxt" class="bg-warning border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Attack</p>
+        <div class="row">
+          <div class="col">
+            <p id="heroAttack" class="fw-bold"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col border border-dark align-self-start" style="max-height:60px; max-width: 100px">
+        <p id="heroDefenseTxt" class="bg-warning border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Defense</p>
+        <div class="row">
+          <div class="col">
+            <p id="heroDefense" class="fw-bold"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col border border-dark align-self-start" style="max-height:60px; max-width: 80px">
+        <p id="heroMagicTxt" class="bg-warning border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Magic</p>
+        <div class="row">
+          <div class="col">
+            <p id="heroMagic" class="fw-bold"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col border border-dark align-self-start" style="max-height:60px; max-width: 85px">
+        <p id="heroSpeedTxt" class="bg-warning border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Speed</p>
+        <div class="row">
+          <div class="col">
+            <p id="heroSpeed" class="fw-bold"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col border border-dark align-self-start" style="max-height:60px; max-width: 85px">
+        <p id="heroCharmTxt" class="bg-warning border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Charm</p>
+        <div class="row">
+          <div class="col">
+            <p id="heroCharm" class="fw-bold"></p>
+          </div>
+        </div>
+      </div>
+      <div class="col border border-dark align-self-start">
+        <p id="heroEquipTxt" class="bg-warning border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Equipment</p>
+        <div class="row">
+          <div class="col">
+            <p id="heroEquip" class="fw-bold"></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+    
+    <div id="heroAbilities" class="row list-group-item-warning mx-auto">
+    <div class="col container-fluid list-group list-group-horizontal d-flex mx-auto">
+      <div class="mx-auto">
+        <button id="heroAttackBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d6 + Attack damage">
+        <img onclick="attackTarget(hero)"src="https://www.dropbox.com/s/vgbus0ygz5zo1dr/champattack.png?raw=1" style="width: 75px; height: 75px">
+        </button>
+        <button id="heroAAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage. Cooldown: 3">
+        <img onclick="overpower()"src="https://www.dropbox.com/s/6i5vt8xh0f2yi4q/Overpowerbutton.png?raw=1" style="width: 75px; height: 75px"></button>
+        <button id="heroMAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Magic to hit doing 2d6 + Magic damage. Cooldown: 4">
+        <img onclick="radiantStrike()"src="https://www.dropbox.com/s/ac2i9337f6qo58q/radiantstrikebutton.png?raw=1" style="width: 75px; height: 75px"></button>
+        <button id="heroSAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Speed to hit doing 1d4 + Speed damage. Cooldown: 2">
+        <img onclick="shieldSlam()"src="https://www.dropbox.com/s/v32iyo3njjoci2f/shieldslambutton.png?raw=1" style="width: 75px; height: 75px"></button>
+        <button id="heroCAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="Restores life equal to 1d6 + Charm. Cooldown: 5">
+        <img onclick="heal()"src="https://www.dropbox.com/s/8jmngowtfotvx0r/healbutton.png?raw=1" style="width: 75px; height: 75px"></button>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <div id="maverBar" class="container pb-3 align-self-end" style="display: none">
+      
+    <div class="card mx-auto border border-dark border-4 bg-success" style="max-width: 600px">
+      <div class="card-header text-dark fw-bold text-center border border-bottom border-dark" id="maverName"></div>
+      <div class="card-body p-0">
+      <div class="row w-100 mx-auto">
+        <div class="col border border-dark mx-auto" style="max-width: 110px">
+      
+        
+      <img id="maverHead" src="https://www.dropbox.com/s/mci8qlnvbf27dz7/maverickhead.png?raw=1" class="img-fluid rounded-start" alt="..." style="width: 100px; height: 100px;">
+        </div>
+    
+
+  <div class="col align-self-start text-center">
+    <div id="maverStats" class="row align-items-start list-group-item-success">
+      <div class="col border border-dark align-self-start" style="max-height:60px; max-width: 60px">
+        <p id="maverLifeTxt" class="bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Life</p>
+        <div class="row align-items-start">
+          <div class="col">
+            <p id="maverLife" class="fw-bold">37</p>
+          </div>
+        </div>
+      </div>
+      <div class="col border border-dark align-self-start" style="max-height:60px; max-width: 85px">
+        <p id="maverAttackTxt" class="bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Attack</p>
+        <div class="row">
+          <div class="col">
+            <p id="maverAttack" class="fw-bold">2</p>
+          </div>
+        </div>
+      </div>
+      <div class="col border border-dark align-self-start" style="max-height:60px; max-width: 100px">
+        <p id="maverDefenseTxt" class="bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Defense</p>
+        <div class="row">
+          <div class="comaverl">
+            <p id="maverDefense" class="fw-bold">14</p>
+          </div>
+        </div>
+      </div>
+      <div class="col border border-dark align-self-start" style="max-height:60px; max-width: 80px">
+        <p id="maverMagicTxt" class="bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Magic</p>
+        <div class="row">
+          <div class="col">
+            <p id="maverMagic" class="fw-bold">1</p>
+          </div>
+        </div>
+      </div>
+      <div class="col border border-dark align-self-start" style="max-height:60px; max-width: 85px">
+        <p id="maverSpeedTxt" class="bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Speed</p>
+        <div class="row">
+          <div class="col">
+            <p id="maverSpeed" class="fw-bold">3</p>
+          </div>
+        </div>
+      </div>
+      <div class="col border border-dark align-self-start" style="max-height:60px; max-width: 85px">
+        <p id="maverCharmTxt" class="bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Charm</p>
+        <div class="row">
+          <div class="col">
+            <p id="maverCharm" class="fw-bold">2</p>
+          </div>
+        </div>
+      </div>
+      <div class="col border border-dark align-self-start">
+        <p id="maverEquipTxt" class="bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0">Equipment</p>
+        <div class="row">
+          <div class="col">
+            <p id="maverEquip" class="fw-bold">Longbow</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+    
+    <div class="row list-group-item-success mx-auto">
+    <div class="col container-fluid list-group list-group-horizontal d-flex mx-auto">
+      <div id="maverAbilities" class="list-group-item-success mx-auto" >
+        <button id="maverAttackBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d6 + Attack damage">
+        <img onclick="attackTarget(rival)" src="https://www.dropbox.com/s/ink29zizk8pizri/maverattack.png?raw=1" style="width: 75px; height: 75px">
+        </button>
+        <button id="maverAAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage. Cooldown: 5">
+        <img onclick="pierce()" src="https://www.dropbox.com/s/goqg3vosds1bzgt/PierceBtn.png?raw=1" style="width: 75px; height: 75px"></button>
+        <button id="maverMAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Magic to hit doing 1d6 + Magic damage. Cooldown: 3">
+        <img onclick="soulShot()" src="https://www.dropbox.com/s/5bu66ct5cjeqtc5/soulshotbtn.png?raw=1" style="width: 75px; height: 75px"></button>
+        <button id="maverSAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Speed to hit doing 2d6 + Speed damage. Cooldown: 4">
+        <img onclick="multiShot()" src="https://www.dropbox.com/s/acikre71v4hzbrh/Multishotbtn.png?raw=1" style="width: 75px; height: 75px"></button>
+        <button id="maverCAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Charm to hit doing 1d4 + Charm; rival Speed -1. Cooldown: 3">
+        <img onclick="bolo()" src="https://www.dropbox.com/s/tpqh4gg791xynki/Bolabtn.png?raw=1" style="width: 75px; height: 75px"></button>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
