@@ -17,7 +17,7 @@
      
     <header>
       <div class="row text-center">
-      <a href="https://n8ofbase.github.io/portfolio">
+      <a href="index.html">
         <img src="https://www.dropbox.com/s/13qsykorcxod5r6/Ico.png?raw=1" alt="Icosahedron D20 logo" class="" style="width: 150px"></a>
       <h3 id="mainHeading">The Icosahedron : Game Design Document</h3>
 		<h5>Outlining the framework, features, and rules of the game.</h5>
@@ -525,8 +525,8 @@ loot(target) {
           
           </div>
 
-          <div id="bossTable" class="d-none">
-            <button class="btn-success btn-lg m-2" onclick="closeTable(bossTable)">Close Table</button>
+          <div id="bossTable" style="display:none">
+            <button class="btn-success btn-lg m-2" onclick="displayIt(bossTable)">Close Table</button>
           <div class="text-center text-light bg-success p-1">
             <h5>Boss Class</h5>
             <p>
@@ -536,8 +536,8 @@ loot(target) {
           
           </div>
 
-          <div id="lootTable" class="d-none">
-            <button class="btn-success btn-lg d-flex mx-auto m-2" onclick="closeTable(lootTable)">Close Table</button>
+          <div id="lootTable" style="display:none">
+            <button class="btn-success btn-lg d-flex mx-auto m-2" onclick="displayIt(lootTable)">Close Table</button>
           <div class="text-center text-light bg-success p-1">
             <h5>Loot Class</h5>
             <p>
@@ -700,8 +700,8 @@ if(this.quantity > 0) {
            <button class="btn-success btn-lg d-flex mx-auto m-2" onclick="displayIt(abilityTable)">Close Table</button>
           </div>
 
-          <div id="trapTable" class="display:none">
-            <button class="btn-success btn-lg d-flex mx-auto m-2" onclick="closeTable(trapTable)">Close Table</button>
+          <div id="trapTable" style="display:none">
+            <button class="btn-success btn-lg d-flex mx-auto m-2" onclick="displayIt(trapTable)">Close Table</button>
           <div class="text-center text-light bg-success p-1">
             <h5>Trap Class</h5>
             <p>
@@ -730,11 +730,11 @@ if(this.quantity > 0) {
             </tbody>
           </table>
           
-            <button class="btn-success btn-lg d-flex mx-auto m-2" onclick="closeTable(trapTable)">Close Table</button>        
+            <button class="btn-success btn-lg d-flex mx-auto m-2" onclick="displayIt(trapTable)">Close Table</button>        
           </div>
 
-          <div id="cacheTable" class="d-none">
-            <button class="btn-success btn-lg d-flex mx-auto m-2" onclick="closeTable(cacheTable)">Close Table</button>
+          <div id="cacheTable" style="display:none">
+            <button class="btn-success btn-lg d-flex mx-auto m-2" onclick="displayIt(cacheTable)">Close Table</button>
           <div class="text-center text-light bg-success p-1">
             <h5>Cache Class</h5>
             <p>
@@ -778,11 +778,11 @@ if(this.quantity > 0) {
 
           <button type="button" class="btn-lg btn-success d-flex mx-auto m-2" data-bs-toggle="modal" data-bs-target="#cacheJS">See JavaScript
               </button>
-              <button class="btn-success btn-lg d-flex mx-auto mx-auto m-2" onclick="closeTable(cacheTable)">Close Table</button>          
+              <button class="btn-success btn-lg d-flex mx-auto mx-auto m-2" onclick="displayIt(cacheTable)">Close Table</button>          
                     
           </div>
 
-          <div id="planeTable" class="d-none">
+          <div id="planeTable" style="display:none">
             
           <div class="text-center text-light bg-success p-1">
             <h5>Plane Class</h5>
@@ -824,7 +824,7 @@ if(this.quantity > 0) {
           </tbody>
           </table>
           
-              <button class="btn-success btn-lg d-flex mx-auto mx-auto m-2" onclick="closeTable(planeTable)">Close Table</button>
+              <button class="btn-success btn-lg d-flex mx-auto mx-auto m-2" onclick="displayIt(planeTable)">Close Table</button>
                     
           </div>
 
@@ -844,13 +844,13 @@ if(this.quantity > 0) {
   </h4>
 
   <div id="planeButton" class="d-flex justify-content-center">
-      <button class="btn-secondary btn-lg" onclick="displayTable(tablePlanes)">Planes List</button>
+      <button class="btn-secondary btn-lg" onclick="displayIt(tablePlanes)">Planes List</button>
       </div><br>
 
 
-      <div id="tablePlanes" class="d-none">
+      <div id="tablePlanes" style="display:none">
         <div id="planeButton" class="d-flex justify-content-center">
-      <button class="btn-secondary btn-lg" onclick="closeTable(tablePlanes)">Close</button>
+      <button class="btn-secondary btn-lg" onclick="displayIt(tablePlanes)">Close</button>
       </div>
       <table class=" table table-secondary table-bordered table-striped text-center">
         <thead>
@@ -1005,7 +1005,7 @@ if(this.quantity > 0) {
           </tr>
         </tbody>
       </table>
-      <button class="btn-secondary btn-lg d-flex mx-auto mx-auto m-2" onclick="closeTable(tablePlanes)">Close Table</button>
+      <button class="btn-secondary btn-lg d-flex mx-auto mx-auto m-2" onclick="displayIt(tablePlanes)">Close Table</button>
       </div>
       </div>
 
@@ -1030,23 +1030,312 @@ if(this.quantity > 0) {
   </div>
 </div>
 
-<div id="Tier 1" style="display:block" class="container mx-auto px-3">
+<div id="tier1" style="display:block" class="container mx-auto px-3">
   <div class="row text-center">
   <h1>Tier 1</h1>
   <h4 class="lead">
+    The first tier of The Icosahedron is playing through the story of Icosa. The player starts the game at a shabby campsite in The Sole. In one direction they see a dreary farm in the distance next to a foul looking brownish red river. In another direction, they see a dying forest with a plume of smoke coming from the middle. The player makes choices and solves puzzles to help the citizens and access new areas. There are 20 planes in Icosa, and while the player can complete the planes in order from 1 to 20, they are not specifically connected in numerical order. Each plane connects to three other planes, for example: Plane 1: The Sole, connects to Plane 2: The Cave, Plane 5: The Woods, and Plane 8: The Falls. This means the player can access Plane 8, as long as they complete the requirements to do so, from the first Plane. This creates many different paths and options to reach the Crit Castle and save Icosa.
+  </h4>
+  </div>
+
+  <div id="roles" class="container">
+      <h5 class="text-center"><u>Roles</u></h5>
+      <div><br>
+        <p>To start the game, the player must choose a hero to play as. They can be a Champion, Maverick, Soul Seer, or Whisper. Click below to see the stats</p><br>
+
+        <div id="rolesButton" class="d-flex justify-content-center">
+      <button class="btn-secondary btn-lg" onclick="displayIt(roleTable)">Roles</button>
+      </div><br>
+
+
+      </div>
+
+      <div id="roleTable" style="display:none">
+        <div id="rolesButton" class="d-flex justify-content-center">
+      <button class="btn-secondary btn-lg" onclick="displayIt(roleTable)">Close Table</button>
+      </div><br>
+      <div class="card border-2 border-warning mx-auto" style="width: 500px">
+  <div class="row g-0 mx-auto">
+    <div class="col-4 text-center mx-auto">
+      <h5 class="card-title"><u>Champion</u></h5>
+      <div class="bg-warning ms-2 p-2" style="height: 310px">
+      <img src="https://www.dropbox.com/s/a7o584nfvrmv2cg/champion.png?raw=1" class="img-fluid rounded-start mx-auto" style="height: 200px" alt="...">
+      <h6 class="card-text">A warrior infused with magical power to strike down rivals and heal allies</h6>
+    </div>
+    </div>
     
+    <div class="col-8 mx-auto">
+        <h5 class="card-title text-center px-1"><u>Abilities</u></h5>
+        <div class="m-1 p-1 pt-3" style="font-size: 15px">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-warning"><img src="https://www.dropbox.com/s/07d169jf2zoyt6y/overpower.png?raw=1" style="width: 25px"><b> Overpower :</b> A powerful strike that pushes rivals back doing 1d8 + Attack damage</li>
+            <li class="list-group-item list-group-item-warning">
+              <img src="https://www.dropbox.com/s/y2awzi650oekwjf/Radiant%20Strike%20%281%29.png?raw=1" style="width: 25px">
+              <b> Radiant Strike :</b> A bright flash of light burns rivals doing 2d6 + Magic damage
+              
+              </li>
+            <li class="list-group-item list-group-item-warning">
+              <img src="https://www.dropbox.com/s/e5hlw4n9vrpakwg/Shield%20Slam.png?raw=1" style="width: 25px"><b> Shield Slam :</b> Quickly slam a rival with a shield doing 1d4 + Speed damage</li>
+            <li class="list-group-item list-group-item-warning"><img src="https://www.dropbox.com/s/az27wiwrwx6pho8/Heal%201.png?raw=1" style="width: 25px"><b> Heal :</b> Restore life equal to 1d6 + Charm</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+    <h5 class="card-title border-warning border-bottom">Stats</h5>
+  </div>
+  <div class="row g-0">
+    <div class="card-body col-2">
+      <table id="champiTable" class="table table-warning table-bordered text-center" style="font-size: 12px">
+        <thead>
+          <tr>
+            <td scope="col">Life</td>
+            <td scope="col">Attack</td>
+            <td scope="col">Defense</td>
+            <td scope="col">Magic</td>
+            <td scope="col">Speed</td>
+            <td scope="col">Charm</td>
+            <td scope="col">Equipment</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>42</th>
+            <th>3</th>
+            <th>15</th>
+            <th>3</th>
+            <th>1</th>
+            <th>1</th>
+            <th>Broadsword & Shield</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+  <div class="card-footer d-grid gap-2">
+          <button onclick="createChampion()" class="btn btn-warning">Choose Champion</button>
+          </div>
+  </div>
+</div>
+<br>
+
+<div class="card border-2 border-success mx-auto" style="width: 500px">
+  <div class="row g-0 mx-auto">
+    <div class="col-4 text-center mx-auto">
+      <h5 class="card-title"><u>Maverick</u></h5>
+      <div class="bg-success ms-2 p-2" style="height: 310px">
+      <img src="https://www.dropbox.com/s/aqhdnu63ad2dafa/Maverick.png?raw=1" class="img-fluid rounded-start" style="height: 200px" alt="...">
+      <h6 class="card-text">A quick and agile archer able to dominate rivals from a distance</h6>
+    </div>
+    </div>
+    
+    <div class="col-8 mx-auto">
+        <h5 class="card-title text-center px-1"><u>Abilities</u></h5>
+        <div class="m-1 p-1 pt-3" style="font-size: 14px">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-success"><img src="https://www.dropbox.com/s/nwfpjqt3xuii4ul/Pierce.png?raw=1" style="width: 25px"><b> Pierce :</b> Expertly aimed shot that penetrates rival defenses doing 1d8 + Attack damage</li>
+            <li class="list-group-item list-group-item-success">
+              <img src="https://www.dropbox.com/s/fgtb5taig4ytzi4/SoulShot.png?raw=1" style="width: 25px">
+              <b> Soul Shot :</b> Fires an srrow infused with spiritual energy doing 1d6 + Magic damage
+              </li>
+            <li class="list-group-item list-group-item-success">
+              <img src="https://www.dropbox.com/s/fck9l660b4hwre2/multishot%20%281%29.png?raw=1" style="width: 25px"><b> Multi-Shot :</b> Quickly shoot two arrows with deadly accuracy doing 2d6 + Speed damage</li>
+            <li class="list-group-item list-group-item-success"><img src="https://www.dropbox.com/s/h97frytbgln65py/bola.png?raw=1" style="width: 25px"><b> Bolo :</b> Tangles rival doing 1d4 + Charm damage and reducing rival speed by 1</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+    <h5 class="card-title border-success border-bottom">Stats</h5>
+  </div>
+  <div class="row g-0">
+    <div class="card-body col-2">
+      <table id="maverTable" class="table table-success table-bordered text-center" style="font-size: 12px">
+        <thead>
+          <tr>
+            <td scope="col">Life</td>
+            <td scope="col">Attack</td>
+            <td scope="col">Defense</td>
+            <td scope="col">Magic</td>
+            <td scope="col">Speed</td>
+            <td scope="col">Charm</td>
+            <td scope="col">Equipment</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>37</th>
+            <th>2</th>
+            <th>14</th>
+            <th>1</th>
+            <th>3</th>
+            <th>2</th>
+            <th>Longbow</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+  <div class="card-footer d-grid gap-2">
+          <button onclick="createMaverick()" class="btn btn-success">Choose Maverick</button>
+          </div>
+  </div>
+</div>
+<br>
+
+<div class="card border-2 border-info mx-auto" style="width: 500px">
+  <div class="row g-0 mx-auto">
+    <div class="col-4 text-center mx-auto">
+      <h5 class="card-title"><u>Soul Seer</u></h5>
+      <div class="bg-info ms-2 p-2" style="height: 310px">
+      <img src="https://www.dropbox.com/s/gzim3rt0s9jdncy/soulseer.png?raw=1" class="img-fluid rounded-start" style="height: 200px" alt="...">
+      <h6 class="card-text">A being surging with psychic power used to terrorize their rivals</h6>
+    </div>
+    </div>
+    
+    <div class="col-8 mx-auto">
+        <h5 class="card-title text-center px-1"><u>Abilities</u></h5>
+        <div class="m-1 p-1 pt-3" style="font-size: 15px">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-info"><img src="https://www.dropbox.com/s/nohvkmuwfhuql0j/choke.png?raw=1" style="width: 25px"><b> Psylance :</b> Psychically close a rivals airway doing 1d6 + Attack damage</li>
+            <li class="list-group-item list-group-item-info">
+              <img src="https://www.dropbox.com/s/3c342epm7n9rd1j/soulsyphon.png?raw=1" style="width: 25px">
+              <b> Soul Syphon :</b> Drains rival life to restore your own doing 1d4 + Magic damage and healing</li>
+            <li class="list-group-item list-group-item-info">
+              <img src="https://www.dropbox.com/s/c4wvxj1n1i51kgo/mindspike.png?raw=1" style="width: 25px"><b> Mind-Spike :</b> A psychic blast to a rival's mind doing 1d4 + Speed damage</li>
+            <li class="list-group-item list-group-item-info"><img src="https://www.dropbox.com/s/rzwevhin0ict1u3/explosion.png?raw=1" style="width: 25px"><b> Explosion :</b> Concussive blast that does 2d8 + Charm damage</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+    <h5 class="card-title border-info border-bottom">Stats</h5>
+  </div>
+  <div class="row g-0">
+    <div class="card-body col-2">
+      <table id="soulsTable" class="table table-info table-bordered text-center" style="font-size: 12px">
+        <thead>
+          <tr>
+            <td scope="col">Life</td>
+            <td scope="col">Attack</td>
+            <td scope="col">Defense</td>
+            <td scope="col">Magic</td>
+            <td scope="col">Speed</td>
+            <td scope="col">Charm</td>
+            <td scope="col">Equipment</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>33</th>
+            <th>1</th>
+            <th>13</th>
+            <th>3</th>
+            <th>2</th>
+            <th>2</th>
+            <th>Staff</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+  <div class="card-footer d-grid gap-2">
+          <button onclick="createSoulSeer()" class="btn btn-info">Choose Soul Seer</button>
+          </div>
+  </div>
+</div>
+<br>
+
+<div class="card border-2 border-secondary mx-auto" style="width: 500px">
+  <div class="row g-0 mx-auto">
+    <div class="col-4 text-center mx-auto">
+      <h5 class="card-title"><u>Whisper</u></h5>
+      <div class="bg-secondary ms-2 p-2" style="height: 310px">
+      <img src="https://www.dropbox.com/s/uqmw1pa5h6yes7i/Whisper.png?raw=1" class="img-fluid rounded-start" style="height: 200px" alt="...">
+      <h6 class="card-text">A Silent stalker that subdues rivals from the shadows</h6>
+    </div>
+    </div>
+    
+    <div class="col-8 mx-auto">
+        <h5 class="card-title text-center px-1"><u>Abilities</u></h5>
+        <div class="m-2" style="font-size: 14px">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-secondary"><img src="https://www.dropbox.com/s/v28ly3gyyeilpa0/deathstrike.png?raw=1" style="width: 25px"><b> Death Strike :</b> Powerful and precise attack doing 1d8 + Attack damage</li>
+            <li class="list-group-item list-group-item-secondary">
+              <img src="https://www.dropbox.com/s/oi1e2rctklwcc2s/darkness.png?raw=1" style="width: 25px">
+              <b> Darkness :</b> Attack to the rival's eyes doing 1d4 + Magic damage and reducing rival Attack by 1</li>
+            <li class="list-group-item list-group-item-secondary">
+              <img src="https://www.dropbox.com/s/s5f21pj3k4vsggu/doublestrike.png?raw=1" style="width: 25px"><b> Double-Strike :</b> Two quick attacks before the rival can even blink doing 2d6 + Speed damage</li>
+            <li class="list-group-item list-group-item-secondary"><img src="https://www.dropbox.com/s/f3kyeokxos0smf0/shadowstep.png?raw=1" style="width: 25px"><b> Shadow-Strike :</b> Silently appear behind rival to stab them in the back doing 1d8 + Charm damage</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+    <h5 class="card-title border-secondary border-bottom">Stats</h5>
+  </div>
+  <div class="row g-0">
+    <div class="card-body col-2">
+      <table id="whispTable" class="table table-secondary table-bordered text-center" style="font-size: 12px">
+        <thead>
+          <tr>
+            <td scope="col">Life</td>
+            <td scope="col">Attack</td>
+            <td scope="col">Defense</td>
+            <td scope="col">Magic</td>
+            <td scope="col">Speed</td>
+            <td scope="col">Charm</td>
+            <td scope="col">Equipment</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>35</th>
+            <th>3</th>
+            <th>14</th>
+            <th>1</th>
+            <th>2</th>
+            <th>2</th>
+            <th>Daggers</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row g-0 text-center">
+  <div class="card-footer d-grid gap-2">
+          <button onclick="createWhisper()" class="btn btn-secondary">Choose Whisper</button>
+          </div>
+  </div>
+</div>
+<br>
+    <div id="rolesButton" class="d-flex justify-content-center">
+      <button class="btn-secondary btn-lg" onclick="displayIt(roleTable)">Close Table</button>
+      </div><br>
+      </div>
+    </div>
+
+</div>
+
+<div>
+    <img src="https://www.dropbox.com/s/74a8hmu0ltvr2co/rainbowdiv.png?raw=1" class="img-fluid">
+  </div>
+
+<div id="tier2" style="display:block" class="container mx-auto px-3">
+  <div class="row text-center">
+  <h1>Tier 2</h1>
+  <h4 class="lead">
+    Defeating Feyl and stopping the corruption of Icosa was just the beginning. Now it is time to rule and rebuild. Because of the devistation brought by Feyl, the inhabitants of Icosa were very near extinction and are in need of compassionate leadership. Now the player must send new heroes out into the Planes to collect materials and recruits to start improving and repopulating the Planes as new threats are awakened in the depths of Icosa to challenge the shift of power. Once enough of Icosa is restored, it's secrets are unlocked revealing that this planet is actually a small moon orbiting another world and that the Crit Castle has a mechanism to open a portal to this newly discovered celestial sphere. Now the player can take their hero or create new heroes to team up with other players to explore this new world of Talus in order to prevent the summoning of a being capable of tearing apart the fabric of this universe. This allows players to create specialized heroes with more unique skills to create unique groups of players going on missions together. The design document for this tier of the game is called <a href="https://docs.google.com/document/d/1cYunKwMhVwrVNuVOU2hnWCQ4YHZ70-Dr/edit?usp=sharing&ouid=111977636312284934106&rtpof=true&sd=true"> I Crit You Not</a>, and I actually wrote it before writing Icosahedron, so some things are the same and others have been changed, but it has the premise laid out to show the foundation. The world of <a href="https://docs.google.com/document/d/1Sbn0zG-4x-RJx2pA_kvlArVrSIMK9Vb1/edit?usp=sharing&ouid=111977636312284934106&rtpof=true&sd=true" > Talus</a> and the conflicts involved are detailed in a story I created as a dungeon master for a group of friends to play through over the course of two years.
   </h4>
   </div>
 </div>
 
-<div id="Tier 2" style="display:block" class="container mx-auto px-3">
-  <div class="row text-center">
-  <h1>Tier 2</h1>
-  <h4 class="lead">
-    
-  </h4>
+<div>
+    <img src="https://www.dropbox.com/s/74a8hmu0ltvr2co/rainbowdiv.png?raw=1" class="img-fluid">
   </div>
-</div>
     
      
  <footer>
