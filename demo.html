@@ -10,9 +10,20 @@
 	<link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="d-flex flex-column h-100">
+<body style="background-color: black">
 
-  <main class="flex-shrink-0">
+    <main class="text-light">
+
+     
+    <header>
+      <div class="row text-center">
+      <a href="index.html">
+        <img src="https://www.dropbox.com/s/13qsykorcxod5r6/Ico.png?raw=1" alt="Icosahedron D20 logo" class="" style="width: 150px"></a>
+      <h3 id="mainHeading">The Icosahedron : Character Demo</h5>
+      </a>
+      </div>
+    </header>
+
 	<!-- input that stores the players name for their hero -->
 	<div id="playerName" class="container bg-dark border border-danger border-3 rounded-pill text-center text-white pb-4">
 		<label for="name"></label>
@@ -28,7 +39,7 @@
 
 <div class="container center mx-auto" id="roles" style="display: none">
   
-<div class="card border-2 border-warning mx-auto" style="width: 500px">
+<div class="card border-2 border-warning mx-auto text-dark" style="width: 500px">
   <div class="row g-0 mx-auto">
     <div class="col-4 text-center mx-auto">
       <h5 class="card-title"><u>Champion</u></h5>
@@ -94,7 +105,7 @@
 </div>
 <br>
 
-<div class="card border-2 border-success mx-auto" style="width: 500px">
+<div class="card border-2 border-success mx-auto text-dark" style="width: 500px">
   <div class="row g-0 mx-auto">
     <div class="col-4 text-center mx-auto">
       <h5 class="card-title"><u>Maverick</u></h5>
@@ -159,7 +170,7 @@
 </div>
 <br>
 
-<div class="card border-2 border-info mx-auto" style="width: 500px">
+<div class="card border-2 border-info mx-auto text-dark" style="width: 500px">
   <div class="row g-0 mx-auto">
     <div class="col-4 text-center mx-auto">
       <h5 class="card-title"><u>Soul Seer</u></h5>
@@ -223,7 +234,7 @@
 </div>
 <br>
 
-<div class="card border-2 border-secondary mx-auto" style="width: 500px">
+<div class="card border-2 border-secondary mx-auto text-dark" style="width: 500px">
   <div class="row g-0 mx-auto">
     <div class="col-4 text-center mx-auto">
       <h5 class="card-title"><u>Whisper</u></h5>
@@ -293,7 +304,7 @@
 
   
 
-<div class="container text-center">
+<div id="logs" class="container text-center" style="display:none">
   <div class="row">
     
     <div id="rivalBar" class="col-8 align-self-center mx-auto">
@@ -308,7 +319,7 @@
 
   </main>
   <!-- Hero Bars contain stats and abilities -->
-   <div id="heroBar" class="container pb-1 align-self-end" style="display: none">
+   <div id="heroBar" class="container pb-1 align-self-end" style="display: none; background-color:black">
       
     <div id="heroCard" class="card mx-auto border border-dark border-4 bg-warning" style="max-width: 600px">
       <div class="card-header text-dark fw-bold text-center border border-bottom border-dark" id="heroName"></div>
