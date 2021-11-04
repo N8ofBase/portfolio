@@ -31,20 +31,69 @@
   <input class="border border-danger rounded-pill" type="text" id="name" value='' placeholder="Hero Name">
   </div><br>
 
+
 <div class="row g-0 text-center">
   <div class="d-grid gap-2 mx-auto" style="max-width: 300px; display: block">
           <button class="btn-secondary btn-lg my-4" onclick="calamityRoll(hero)">Calamity Roll</button>
           </div>
+          <div class="d-grid gap-2 mx-auto" style="max-width: 300px; display: block">
+          <button class="btn-secondary btn-lg my-4" onclick="enhanceRoll(hero)">Enhancement Roll</button>
+          </div>
   </div>
-
-<div class="row g-0 text-center">
-  <div id="roleButton" class="d-grid gap-2 mx-auto" style="max-width: 300px; display: block">
-          <button class="btn-secondary btn-lg my-4" onclick="displayRoles()">Choose Your Role</button>
+  <div class="row g-0 text-center">
+  <div  class="d-grid gap-2 mx-auto" style="max-width: 300px; display: block">
+          <button id="demobtn" class="btn btn-secondary btn-lg my-4" onclick="createChampion()">Demo</button>
           </div>
   </div>
 
+<!-- <div class="row g-0 text-center">
+  <div id="roleButton" class="d-grid gap-2 mx-auto" style="max-width: 300px; display: block">
+          <button class="btn-secondary btn-lg my-4" onclick="displayRoles()">Choose Your Role</button>
+          </div>
+  </div> -->
 
-<div class="container center mx-auto" id="roles" style="display: none">
+<!-- Button trigger modal -->
+<!-- <div id="echoose">
+<img src="https://www.dropbox.com/s/g4xb67te2qrtk2c/statDie.png?raw=1" type="button" style="width:100px" class="btn bg-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+</div> -->
+<!-- Modal -->
+<div class="modal fade" id="statModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="statModal" style="display:none">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Choose Stat</h5>
+        
+      </div>
+      <div class="modal-body">
+        <button type="button" class="btn" onclick="attackIncrease(hero, heroAttack)" data-bs-dismiss="modal">Attack +1</button>
+        <button type="button" class="btn" onclick="magicIncrease(hero, heroMagic)" data-bs-dismiss="modal">Magic +1</button>
+        <button type="button" class="btn" onclick="speedIncrease(hero, heroSpeed)" data-bs-dismiss="modal">Speed +1</button>
+        <button type="button" class="btn" onclick="charmIncrease(hero, heroCharm)" data-bs-dismiss="modal">Charm +1</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="abilityModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="statModal" style="display:none">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Choose Stat</h5>
+        
+      </div>
+      <div class="modal-body">
+        <button type="button" class="btn" onclick="hero.attackAbilityIncrease()" data-bs-dismiss="modal">Attack Ability +</button>
+        <button type="button" class="btn" onclick="magicAbilityIncrease()" data-bs-dismiss="modal">Magic Ability +</button>
+        <button type="button" class="btn" onclick="speedAbilityIncrease()" data-bs-dismiss="modal">Speed Ability +</button>
+        <button type="button" class="btn" onclick="charmAbilityIncrease()" data-bs-dismiss="modal">Charm Ability +</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="container center mx-auto" id="roles" style="display: block">
   
 <div class="card border-2 border-warning mx-auto text-dark" style="width: 500px">
   <div class="row g-0 mx-auto">
@@ -313,43 +362,29 @@
       <img style="max-width: 250px" class="w-100">
     </div>
 
-<div id="logs" class="container text-center" style="display:block; max-width: 500px">
+<div id="logs" class="container" style="display:block; max-width: 500px">
   <div class="row">
     <div id="rivalLog" class="col-12 align-self-center"></div>
   </div>
-  <div class="row align-items-end justify-content-start">
-    <div id="heroLog" class="col align-self-center bg-success">Hero Log</div>
+  <div id="heroLog" class="row mx-auto">
+    <div class="card col-2 list-group-item-warning text-center">
+    
+      <img id="champiDie" src="https://www.dropbox.com/s/z3orlrcox11k80a/herodie.png?raw=1" class="card-img mx-auto" style="width:55px">
+      <div class="card-img-overlay">
+      <p class="card-title mx-auto" style="font-size:10px">20</p>
+      </div>
+    </div>
+    </div>
   </div>
 </div>
 
-<!-- <div id="statEnhance">
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
-  </main>
-  <!-- Hero Bars contain stats and abilities -->
-   <div id="heroBar" class="container pb-1 align-self-end" style="display: none; background-color:black">
-      
+<div id="heroBar" class="container pb-1" style="display: none; background-color:black">
     <div id="heroCard" class="card mx-auto border border-dark border-4 bg-warning" style="max-width: 600px">
       <div class="card-header text-dark fw-bold text-center border border-bottom border-dark" id="heroName"></div>
       <div class="card-body p-0">
       <div class="row w-100 mx-auto">
+        
         <div class="col border border-dark mx-auto" style="max-width: 110px">
       
         
@@ -437,10 +472,22 @@
       </div>
     </div>
     </div>
+      <div class="card-footer fw-bold list-group-item-danger text-center mx-auto border border-top d-grid p-2">
+        <button id="endturn" type="button"  class="btn btn-danger" onclick="endTurn(hero)">
+          END TURN
+        </button>
+    
+  </div>
     </div>
     </div>
+    
     </div>
+    
     </div>
+
+  </main>
+  <!-- Hero Bars contain stats and abilities -->
+   
 
     <div id="maverBar" class="container pb-3 align-self-end" style="display: none">
       

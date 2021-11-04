@@ -63,3 +63,17 @@
 
 .fw-semibold { font-weight: 600; }
 .lh-tight { line-height: 1.25; }
+
+/* #herodie {
+  position: relative;
+  text-align: left;
+  color: black;
+}
+
+#funroll {
+  position: absolute;
+  top: 50%;
+  left: 49px;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+} */
