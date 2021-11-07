@@ -49,6 +49,9 @@ let heroLog = document.getElementById("heroLog");
 let rivalLog = document.getElementById("rivalLog");
 let enhanceBtn = document.getElementById("echoose");
 let statModal = document.getElementById("statModal");
+let calamityModal = document.getElementById("calamityModal");
+let abilityModal = document.getElementById("abilityModal");
+let enhanceModal = document.getElementById("enhanceModal");
 
 
 
@@ -73,9 +76,6 @@ function closeRoles() {
   document.getElementById('roleButton').innerHTML = '<button id="roleButton" class="btn-secondary btn-lg my-4" onclick="displayRoles()">Choose Your Role</button>';
 }
 
-function alertBox(id) {
-  
-}
 
 function calamityRoll(being) {
   let calamityRoll = being.rollD20();
@@ -205,12 +205,7 @@ function enhanceRoll(being) {
       heroLog.innerHTML = "<p><b>Wow! " + being.name + " rolled a " + enhanceRoll + " for their enhancement which means they get nothing. " + being.name + " is unlucky even when getting lucky...</b></p>";
       break;
     case 2:
-      heroAttackBtn.disabled = "true";
-      heroAAbilityBtn.disabled = "true";
-      heroMAbilityBtn.disabled = "true";
-      heroSAbilityBtn.disabled = "true";
-      heroCAbilityBtn.disabled = "true";
-      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="https://www.dropbox.com/s/qdh6gqcb9585xb7/statDie.png?raw=1" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
+      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
       break;
     case 3:
       being.maxLife += 5;
@@ -232,12 +227,7 @@ function enhanceRoll(being) {
       heroLog.innerHTML = "<p><b>" + being.name + " has gained confidence in using their weapon.</b></p>";
       break;
     case 6:
-      heroAttackBtn.disabled = "true";
-      heroAAbilityBtn.disabled = "true";
-      heroMAbilityBtn.disabled = "true";
-      heroSAbilityBtn.disabled = "true";
-      heroCAbilityBtn.disabled = "true";
-      heroLog.innerHTML = `<div class="col m-0"><p><b>` + being.name + `'s abilities have improved through hard work! Choose an ability to upgrade.</b></p><div class='text-center m-3'><img src="https://www.dropbox.com/s/7jr3euvmeuw0hre/abilityup.png?raw=1" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#abilityModal"></div></div>`;
+      heroLog.innerHTML = `<div class="col m-0"><p><b>` + being.name + `'s abilities have improved through hard work! Choose an ability to upgrade.</b></p><div class='text-center m-3'><img src="images/abilityup.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#abilityModal"></div></div>`;
       break;
     case 7:
     if(!hero.pack.includes(healingWater)) {
@@ -256,17 +246,10 @@ function enhanceRoll(being) {
       heroLog.innerHTML = "<p><b>" + being.name + " feels renewed motivation and energy! " + being.name + "'s life increases by 10.</b></p>";
       break;
     case 9:
-      being.charm --;
-      heroCharm.innerText = being.charm;
-      heroLog.innerHTML = "<p><b>" + being.name + " probably should have done some more vocal exercises yesterday. " + being.name + "'s Charm is reduced by 1.</b></p>";
+      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
       break;
     case 10:
-      heroAttackBtn.disabled = "true";
-      heroAAbilityBtn.disabled = "true";
-      heroMAbilityBtn.disabled = "true";
-      heroSAbilityBtn.disabled = "true";
-      heroCAbilityBtn.disabled = "true";
-      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="https://www.dropbox.com/s/qdh6gqcb9585xb7/statDie.png?raw=1" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
+      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
       break;
     case 11:
       being.maxLife += 5;
@@ -275,13 +258,7 @@ function enhanceRoll(being) {
       break;
     case 12:
       being.maxLife += 5;
-      heroAttackBtn.disabled = "true";
-      heroAAbilityBtn.disabled = "true";
-      heroMAbilityBtn.disabled = "true";
-      heroSAbilityBtn.disabled = "true";
-      heroCAbilityBtn.disabled = "true";
-      
-      heroLog.innerHTML = `<div class="col m-0"><p><b>` + being.name + ` gains 5 Life and their abilities have improved through hard work! Choose an ability to upgrade.</b></p><div class='text-center m-3'><img src="https://www.dropbox.com/s/7jr3euvmeuw0hre/abilityup.png?raw=1" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#abilityModal"></div></div>`;
+      heroLog.innerHTML = `<div class="col m-0"><p><b>` + being.name + ` gains 5 Life and their abilities have improved through hard work! Choose an ability to upgrade.</b></p><div class='text-center m-3'><img src="images/abilityup.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#abilityModal"></div></div>`;
       break;
     case 13:
       being.maxLife += 5;
@@ -303,12 +280,7 @@ function enhanceRoll(being) {
       heroLog.innerHTML = "<p><b>After working on their footwork, " + being.name + "'s Defense increases by 1!</b></p>";
       break;
     case 16:
-      heroAttackBtn.disabled = "true";
-      heroAAbilityBtn.disabled = "true";
-      heroMAbilityBtn.disabled = "true";
-      heroSAbilityBtn.disabled = "true";
-      heroCAbilityBtn.disabled = "true";
-      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="https://www.dropbox.com/s/qdh6gqcb9585xb7/statDie.png?raw=1" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
+      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
       break;
     case 17:
       being.maxLife += 10;
@@ -320,22 +292,12 @@ function enhanceRoll(being) {
       being.maxLife += 10;
       being.life = being.maxLife;
       heroLife.innerText = being.life;
-      heroAttackBtn.disabled = "true";
-      heroAAbilityBtn.disabled = "true";
-      heroMAbilityBtn.disabled = "true";
-      heroSAbilityBtn.disabled = "true";
-      heroCAbilityBtn.disabled = "true";
-      heroLog.innerHTML = `<div class="col m-0"><p><b>After getting some really good sleep last night, ` + being.name + ` gains 10 Life and an increase to Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="https://www.dropbox.com/s/qdh6gqcb9585xb7/statDie.png?raw=1" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
+      heroLog.innerHTML = `<div class="col m-0"><p><b>After getting some really good sleep last night, ` + being.name + ` gains 10 Life and an increase to Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
       
       break;
       case 19:
       weaponUpgrade(being);
-      heroAttackBtn.disabled = "true";
-      heroAAbilityBtn.disabled = "true";
-      heroMAbilityBtn.disabled = "true";
-      heroSAbilityBtn.disabled = "true";
-      heroCAbilityBtn.disabled = "true";
-      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice last night, gave ` + being.name + `'s weapon better balance and an increase to Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="https://www.dropbox.com/s/qdh6gqcb9585xb7/statDie.png?raw=1" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
+      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice last night, gave ` + being.name + `'s weapon better balance and an increase to Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
       
       break;
       case 20:
@@ -343,12 +305,7 @@ function enhanceRoll(being) {
       being.life = being.maxLife;
       heroLife.innerText = being.life;
       defenseIncrease(being, heroDefense);
-      heroAttackBtn.disabled = "true";
-      heroAAbilityBtn.disabled = "true";
-      heroMAbilityBtn.disabled = "true";
-      heroSAbilityBtn.disabled = "true";
-      heroCAbilityBtn.disabled = "true";
-      heroLog.innerHTML = `<div class="col m-0"><p><b>Luck smiles on ` + being.name + `. Granting + 10 to Life, +1 to Defense, and an increase to Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="https://www.dropbox.com/s/qdh6gqcb9585xb7/statDie.png?raw=1" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
+      heroLog.innerHTML = `<div class="col m-0"><p><b>Luck smiles on ` + being.name + `. Granting + 10 to Life, +1 to Defense, and an increase to Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
       
   }
 }
@@ -462,10 +419,31 @@ class Hero extends Being {
     super(name, title, maxLife, life, attack, defense, magic, speed, charm, weapon, pack);
     this.attackAbility = attackAbility; this.magicAbility = magicAbility; this.speedAbility = speedAbility; this.charmAbility = charmAbility;
   }
+
+  heroRollD20() {
+    let roll = Math.floor(Math.random() * 20) + 1;
+    
+    switch(roll) {
+      case 1:
+      let newCalamity = new bootstrap.Modal(calamityModal);
+      document.getElementById("heroCalamity").innerHTML = `<p><b>Luck laughs in the face of ` + this.name + ` as they roll a 1. Now ` + this.name + ` must further test their luck by rolling the Calamity Die!</b></p>`;
+      newCalamity.toggle();
+      break;
+      case 20:
+      let newEnhance = new bootstrap.Modal(enhanceModal);
+      document.getElementById("heroEnhance").innerHTML = `<p><b>` + this.name + ` rolls a 20! Luck is finally on their side. Roll the Enhancement Die to recieve your reward.</b></p>`;
+      newEnhance.toggle();
+      break;
+      default:
+      heroLog.innerHTML = `<p><b>` + this.name + ` rolled a <u>` + roll + `</u></b></p>`;
+    }
+
+    
+    return roll;
+  }
+  
 }
-
 class Champion extends Hero {
-
 
   overpower() {
     let disabled = document.createAttribute("disabled");
@@ -484,35 +462,192 @@ class Champion extends Hero {
   attackAbilityIncrease() {
     let abilityDie = this.attackAbility.die;
     let abilityDie2 = this.attackAbility.die2;
-    if(abilityDie == 4 && abilityDie2 == 0) {
-      this.attackAbility.die = 6;
-    }
+    
     if(abilityDie == 6 && abilityDie2 == 0) {
       this.attackAbility.die = 8;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.attackAbility.name + ` Ability increases from 1D6 to 1D8!</b></p>`;
     }
     if(abilityDie == 8 && abilityDie2 == 0) {
       this.attackAbility.die = 10;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.attackAbility.name + ` Ability increases from 1D8 to 1D10!</b></p>`;
     }
     if(abilityDie == 10 && abilityDie2 == 0) {
       this.attackAbility.die = 12;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.attackAbility.name + ` Ability increases from 1D10 to 1D12!</b></p>`;
     }
     if(abilityDie == 12 && abilityDie2 == 0) {
       this.attackAbility.die = 6;
       this.attackAbility.die2 = 6;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.attackAbility.name + ` Ability increases from 1D12 to 2D6!</b></p>`;
     }
     if(abilityDie == 6 && abilityDie2 == 6) {
       this.attackAbility.die = 8;
       this.attackAbility.die2 = 8;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.attackAbility.name + ` Ability increases from 2D6 to 2D8!</b></p>`;
     }
     if(abilityDie == 8 && abilityDie2 == 8) {
       this.attackAbility.die = 10;
       this.attackAbility.die2 = 10;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.attackAbility.name + ` Ability increases from 2D8 to 2D10!</b></p>`;
     }
     if(abilityDie == 10 && abilityDie2 == 10) {
       this.attackAbility.die = 12;
       this.attackAbility.die2 = 12;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.attackAbility.name + ` Ability increases from 2D10 to 2D12!</b></p>`;
     }
   }
+
+  magicAbilityIncrease() {
+    let abilityDie = this.magicAbility.die;
+    let abilityDie2 = this.magicAbility.die2;
+    if(abilityDie == 4 && abilityDie2 == 0) {
+      this.magicAbility.die = 6;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.magicAbility.name + ` Ability increases from 1D4 to 1D6!</b></p>`;
+    }
+    
+    if(abilityDie == 6 && abilityDie2 == 0) {
+      this.magicAbility.die = 8;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.magicAbility.name + ` Ability increases from 1D6 to 1D8!</b></p>`;
+    }
+    if(abilityDie == 8 && abilityDie2 == 0) {
+      this.magicAbility.die = 10;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.magicAbility.name + ` Ability increases from 1D8 to 1D10!</b></p>`;
+    }
+    if(abilityDie == 10 && abilityDie2 == 0) {
+      this.magicAbility.die = 12;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.magicAbility.name + ` Ability increases from 1D10 to 1D12!</b></p>`;
+    }
+    if(abilityDie == 12 && abilityDie2 == 0) {
+      this.magicAbility.die = 6;
+      this.magicAbility.die2 = 6;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.magicAbility.name + ` Ability increases from 1D12 to 2D6!</b></p>`;
+    }
+    if(abilityDie == 6 && abilityDie2 == 6) {
+      this.magicAbility.die = 8;
+      this.magicAbility.die2 = 8;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.magicAbility.name + ` Ability increases from 2D6 to 2D8!</b></p>`;
+    }
+    if(abilityDie == 8 && abilityDie2 == 8) {
+      this.magicAbility.die = 10;
+      this.magicAbility.die2 = 10;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.magicAbility.name + ` Ability increases from 2D8 to 2D10!</b></p>`;
+    }
+    if(abilityDie == 10 && abilityDie2 == 10) {
+      this.magicAbility.die = 12;
+      this.magicAbility.die2 = 12;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.magicAbility.name + ` Ability increases from 2D10 to 2D12!</b></p>`;
+    }
+  }
+
+  speedAbilityIncrease() {
+    let abilityDie = this.speedAbility.die;
+    let abilityDie2 = this.speedAbility.die2;
+    if(abilityDie == 4 && abilityDie2 == 0) {
+      this.speedAbility.die = 6;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.speedAbility.name + ` Ability increases from 1D4 to 1D6!</b></p>`;
+    }
+    
+    if(abilityDie == 6 && abilityDie2 == 0) {
+      this.speedAbility.die = 8;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.speedAbility.name + ` Ability increases from 1D6 to 1D8!</b></p>`;
+    }
+    if(abilityDie == 8 && abilityDie2 == 0) {
+      this.speedAbility.die = 10;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.speedAbility.name + ` Ability increases from 1D8 to 1D10!</b></p>`;
+    }
+    if(abilityDie == 10 && abilityDie2 == 0) {
+      this.speedAbility.die = 12;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.speedAbility.name + ` Ability increases from 1D10 to 1D12!</b></p>`;
+    }
+    if(abilityDie == 12 && abilityDie2 == 0) {
+      this.speedAbility.die = 6;
+      this.speedAbility.die2 = 6;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.speedAbility.name + ` Ability increases from 1D12 to 2D6!</b></p>`;
+    }
+    if(abilityDie == 6 && abilityDie2 == 6) {
+      this.speedAbility.die = 8;
+      this.speedAbility.die2 = 8;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.speedAbility.name + ` Ability increases from 2D6 to 2D8!</b></p>`;
+    }
+    if(abilityDie == 8 && abilityDie2 == 8) {
+      this.speedAbility.die = 10;
+      this.speedAbility.die2 = 10;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.speedAbility.name + ` Ability increases from 2D8 to 2D10!</b></p>`;
+    }
+    if(abilityDie == 10 && abilityDie2 == 10) {
+      this.speedAbility.die = 12;
+      this.speedAbility.die2 = 12;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.speedAbility.name + ` Ability increases from 2D10 to 2D12!</b></p>`;
+    }
+  }
+
+  charmAbilityIncrease() {
+    let abilityDie = this.charmAbility.die;
+    let abilityDie2 = this.charmAbility.die2;
+    if(abilityDie == 4 && abilityDie2 == 0) {
+      this.charmAbility.die = 6;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.charmAbility.name + ` Ability increases from 1D4 to 1D6!</b></p>`;
+    }
+    
+    if(abilityDie == 6 && abilityDie2 == 0) {
+      this.charmAbility.die = 8;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.charmAbility.name + ` Ability increases from 1D6 to 1D8!</b></p>`;
+    }
+    if(abilityDie == 8 && abilityDie2 == 0) {
+      this.charmAbility.die = 10;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.charmAbility.name + ` Ability increases from 1D8 to 1D10!</b></p>`;
+    }
+    if(abilityDie == 10 && abilityDie2 == 0) {
+      this.charmAbility.die = 12;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.charmAbility.name + ` Ability increases from 1D10 to 1D12!</b></p>`;
+    }
+    if(abilityDie == 12 && abilityDie2 == 0) {
+      this.charmAbility.die = 6;
+      this.charmAbility.die2 = 6;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.charmAbility.name + ` Ability increases from 1D12 to 2D6!</b></p>`;
+    }
+    if(abilityDie == 6 && abilityDie2 == 6) {
+      this.charmAbility.die = 8;
+      this.charmAbility.die2 = 8;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.charmAbility.name + ` Ability increases from 2D6 to 2D8!</b></p>`;
+    }
+    if(abilityDie == 8 && abilityDie2 == 8) {
+      this.charmAbility.die = 10;
+      this.charmAbility.die2 = 10;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.charmAbility.name + ` Ability increases from 2D8 to 2D10!</b></p>`;
+    }
+    if(abilityDie == 10 && abilityDie2 == 10) {
+      this.charmAbility.die = 12;
+      this.charmAbility.die2 = 12;
+      heroLog.innerHTML = `<p><b>` + this.name + `'s ` + this.charmAbility.name + ` Ability increases from 2D10 to 2D12!</b></p>`;
+    }
+  }
+
+attackIncrease(id) {
+  this.attack ++;
+  id.innerText = this.attack;
+  heroLog.innerHTML = `<p><b>` + this.name + `'s Attack increased by 1!</b></p>`;
+}
+magicIncrease(id) {
+  this.magic ++;
+  id.innerText = this.magic;
+  heroLog.innerHTML = `<p><b>` + this.name + `'s Magic increased by 1!</b></p>`;
+}
+speedIncrease(id) {
+  this.speed ++;
+  id.innerText = this.speed;
+  heroLog.innerHTML = `<p><b>` + this.name + `'s Speed increased by 1!</b></p>`;
+}
+charmIncrease(id) {
+  this.charm ++;
+  id.innerText = this.charm;
+  heroLog.innerHTML = `<p><b>` + this.name + `'s Charm increased by 1!</b></p>`;
+}
+defenseIncrease(id) {
+  this.defense ++;
+  id.innerText = this.defense;
+  heroLog.innerHTML = `<p><b>` + this.name + `'s Defense increased by 1!</b></p>`;
+}
 
   magicAbilityIncrease() {
     let abilityDie = this.magicAbility.die;
@@ -620,26 +755,7 @@ class Maverick extends Hero {
 
 }
 
-function attackIncrease(being, id) {
-  being.attack ++;
-  id.innerText = being.attack;
-}
-function magicIncrease(being, id) {
-  being.magic ++;
-  id.innerText = being.magic;
-}
-function speedIncrease(being, id) {
-  being.speed ++;
-  id.innerText = being.speed;
-}
-function charmIncrease(being, id) {
-  being.charm ++;
-  id.innerText = being.charm;
-}
-function defenseIncrease(being, id) {
-  being.defense ++;
-  id.innerText = being.defense;
-}
+
 
 function weaponUpgrade(being) {
   let weaponDie = being.weapon.die;
