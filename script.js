@@ -438,25 +438,7 @@ class Hero extends Being {
       heroLog.innerHTML = `<p><b>` + this.name + ` rolled a <u>` + roll + `</u></b></p>`;
     }
 
-    
     return roll;
-  }
-  
-}
-class Champion extends Hero {
-
-  overpower() {
-    let disabled = document.createAttribute("disabled");
-    heroAAbilityBtn.setAttribute(disabled);
-    this.attackAbility.turn = this.attackAbility.cooldown;
-    let d20 = this.rollD20();
-    let abilityRoll = d20 + this.attack;
-    let damageDie = Math.floor(Math.random() * this.attackAbility.dice) + 1;
-
-    if (abilityRoll > rival.defense) {
-      let damage = this.attack + damageDie;
-      rival.life = rival.life - damage;
-    }
   }
 
   attackAbilityIncrease() {
@@ -648,105 +630,24 @@ defenseIncrease(id) {
   id.innerText = this.defense;
   heroLog.innerHTML = `<p><b>` + this.name + `'s Defense increased by 1!</b></p>`;
 }
+  
+}
+class Champion extends Hero {
 
-  magicAbilityIncrease() {
-    let abilityDie = this.magicAbility.die;
-    let abilityDie2 = this.magicAbility.die2;
-    if(abilityDie == 4 && abilityDie2 == 0) {
-      this.magicAbility.die = 6;
-    }
-    if(abilityDie == 6 && abilityDie2 == 0) {
-      this.magicAbility.die = 8;
-    }
-    if(abilityDie == 8 && abilityDie2 == 0) {
-      this.magicAbility.die = 10;
-    }
-    if(abilityDie == 10 && abilityDie2 == 0) {
-      this.magicAbility.die = 12;
-    }
-    if(abilityDie == 12 && abilityDie2 == 0) {
-      this.magicAbility.die = 6;
-      this.magicAbility.die2 = 6;
-    }
-    if(abilityDie == 6 && abilityDie2 == 6) {
-      this.magicAbility.die = 8;
-      this.magicAbility.die2 = 8;
-    }
-    if(abilityDie == 8 && abilityDie2 == 8) {
-      this.magicAbility.die = 10;
-      this.magicAbility.die2 = 10;
-    }
-    if(abilityDie == 10 && abilityDie2 == 10) {
-      this.magicAbility.die = 12;
-      this.magicAbility.die2 = 12;
+  overpower() {
+    let disabled = document.createAttribute("disabled");
+    heroAAbilityBtn.setAttribute(disabled);
+    this.attackAbility.turn = this.attackAbility.cooldown;
+    let d20 = this.rollD20();
+    let abilityRoll = d20 + this.attack;
+    let damageDie = Math.floor(Math.random() * this.attackAbility.dice) + 1;
+
+    if (abilityRoll > rival.defense) {
+      let damage = this.attack + damageDie;
+      rival.life = rival.life - damage;
     }
   }
 
-  speedAbilityIncrease() {
-    let abilityDie = this.speedAbility.die;
-    let abilityDie2 = this.speedAbility.die2;
-    if(abilityDie == 4 && abilityDie2 == 0) {
-      this.speedAbility.die = 6;
-    }
-    if(abilityDie == 6 && abilityDie2 == 0) {
-      this.speedAbility.die = 8;
-    }
-    if(abilityDie == 8 && abilityDie2 == 0) {
-      this.speedAbility.die = 10;
-    }
-    if(abilityDie == 10 && abilityDie2 == 0) {
-      this.speedAbility.die = 12;
-    }
-    if(abilityDie == 12 && abilityDie2 == 0) {
-      this.speedAbility.die = 6;
-      this.speedAbility.die2 = 6;
-    }
-    if(abilityDie == 6 && abilityDie2 == 6) {
-      this.speedAbility.die = 8;
-      this.speedAbility.die2 = 8;
-    }
-    if(abilityDie == 8 && abilityDie2 == 8) {
-      this.speedAbility.die = 10;
-      this.speedAbility.die2 = 10;
-    }
-    if(abilityDie == 10 && abilityDie2 == 10) {
-      this.speedAbility.die = 12;
-      this.speedAbility.die2 = 12;
-    }
-  }
-
-  charmAbilityIncrease() {
-    let abilityDie = this.charmAbility.die;
-    let abilityDie2 = this.charmAbility.die2;
-    if(abilityDie == 4 && abilityDie2 == 0) {
-      this.charmAbility.die = 6;
-    }
-    if(abilityDie == 6 && abilityDie2 == 0) {
-      this.charmAbility.die = 8;
-    }
-    if(abilityDie == 8 && abilityDie2 == 0) {
-      this.charmAbility.die = 10;
-    }
-    if(abilityDie == 10 && abilityDie2 == 0) {
-      this.charmAbility.die = 12;
-    }
-    if(abilityDie == 12 && abilityDie2 == 0) {
-      this.charmAbility.die = 6;
-      this.charmAbility.die2 = 6;
-    }
-    if(abilityDie == 6 && abilityDie2 == 6) {
-      this.charmAbility.die = 8;
-      this.charmAbility.die2 = 8;
-    }
-    if(abilityDie == 8 && abilityDie2 == 8) {
-      this.charmAbility.die = 10;
-      this.charmAbility.die2 = 10;
-    }
-    if(abilityDie == 10 && abilityDie2 == 10) {
-      this.charmAbility.die = 12;
-      this.charmAbility.die2 = 12;
-    }
-  }
 
 }
 
@@ -896,7 +797,7 @@ let hero;
 let rival = new Maverick("Maverick", "Maverick", 37, 37, 2, 14, 1, 3, 2, pierce, soulShot, multiShot, bola, 6, []);
 let healingWater = new Food("Healing Water", "Restores 10 Life",1,10)
 let broadsword = new Weapon("Broadsword & Shield", 6,0);
-
+let longbow = new Weapon("Longbow & Arrows", 6,0);
 
 function createChampion() {
 
@@ -942,16 +843,18 @@ function createChampion() {
 
 function createMaverick() {
 
-  if (playerName.value == "") {
-    alert("Hero name is required");
-  } else {
-    hero = new Champion(playerName.value, "Maverick", 37, 37, 2, 14, 1, 3, 2, pierce, soulShot, multiShot, bola, 6, []);
+    // if (playerName.value == "") {
+  //   alert("Hero name is required");
+  // } else {
+    hero = new Maverick(playerName.value, "Maverick", 37, 37, 2, 14, 1, 3, 2, pierce, soulShot, multiShot, bola, longbow, []);
     document.getElementById("playerName").style.display = "none";
-    document.getElementById("closeButton").style.display = "none";
+    document.getElementById("demobtn").style.display = "none";
     document.getElementById("roles").style.display = "none";
     heroName.innerText = playerName.value;
+    heroLog.attributes[1].value = "row justify-content-start list-group-item-success text-dark";
+    
     heroCard.attributes[1].value = "card mx-auto border border-dark border-4 bg-success";
-    heroHead.attributes[1].value = "https://www.dropbox.com/s/mci8qlnvbf27dz7/maverickhead.png?raw=1";
+    heroHead.attributes[1].value = "https://www.dropbox.com/s/a9pj9eomelt941u/championhead.png?raw=1";
     heroStats.attributes[1].value = "row align-items-start list-group-item-success";
     heroLifeTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
     heroLife.innerText = hero.life;
@@ -966,29 +869,21 @@ function createMaverick() {
     heroCharmTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
     heroCharm.innerText = hero.charm;
     heroEquipTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
-    heroEquip.innerText = "Longbow";
+    heroEquip.innerText = hero.weapon.name + " : 1D6";
     heroAbilities.attributes[1].value = "row list-group-item-success mx-auto";
-    heroAttackBtn.innerHTML = '<button id="heroAttackBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d6 + Attack damage"><img onclick="attackTarget(rival)" src="https://www.dropbox.com/s/ink29zizk8pizri/maverattack.png?raw=1" style="width: 75px; height: 75px"></button>';
-    heroAAbilityBtn.innerHTML = '<button id="heroAAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage. Cooldown: 5"><img onclick="pierce()" src="https://www.dropbox.com/s/goqg3vosds1bzgt/PierceBtn.png?raw=1" style="width: 75px; height: 75px"></button>';
-    heroMAbilityBtn.innerHTML = '<button id="heroMAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Magic to hit doing 1d6 + Magic damage. Cooldown: 3"><img onclick="soulShot()" src="https://www.dropbox.com/s/5bu66ct5cjeqtc5/soulshotbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
-    heroSAbilityBtn.innerHTML = '<button id="heroSAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Speed to hit doing 2d6 + Speed damage. Cooldown: 4"><img onclick="multiShot()" src="https://www.dropbox.com/s/acikre71v4hzbrh/Multishotbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
-    heroCAbilityBtn.innerHTML = '<button id="heroCAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Charm to hit doing 1d4 + Charm; rival Speed -1. Cooldown: 3"><img onclick="bola()" src="https://www.dropbox.com/s/tpqh4gg791xynki/Bolabtn.png?raw=1" style="width: 75px; height: 75px"></button>'
+    heroAttackBtn.innerHTML = '<button id="heroAttackBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d6 + Attack damage"><img onclick="attackTarget(rival)" src="https://www.dropbox.com/s/vgbus0ygz5zo1dr/champattack.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroAAbilityBtn.innerHTML = '<button id="heroAAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage. Cooldown: 3"> <img onclick="pierce()" src="https://www.dropbox.com/s/6i5vt8xh0f2yi4q/Overpowerbutton.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroMAbilityBtn.innerHTML = '<button id="heroMAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Magic to hit doing 1d6 + Magic damage. Cooldown: 4"><img onclick="soulShot()" src="https://www.dropbox.com/s/ac2i9337f6qo58q/radiantstrikebutton.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroSAbilityBtn.innerHTML = '<button id="heroSAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Speed to hit doing 2d6 + Speed damage. Cooldown: 2"><img onclick="multiShot()" src="https://www.dropbox.com/s/v32iyo3njjoci2f/shieldslambutton.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroCAbilityBtn.innerHTML = '<button id="heroCAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Charm to hit and tangles rival doing 1d4 + Charm and reduce rival speed by 1. Cooldown: 5"><img onclick="bola()"src="https://www.dropbox.com/s/8jmngowtfotvx0r/healbutton.png?raw=1" style="width: 75px; height: 75px"></button>'
 
 
     heroBar.style.display = "block";
   }
 
-}
+// }
 
-function createMaverick() {
-  let maverName = document.getElementById("maverName");
-  let maverBar = document.getElementById("maverBar");
-  document.getElementById("playerName").style.display = "none";
-  document.getElementById("closeButton").style.display = "none";
-  document.getElementById("roles").style.display = "none";
-  maverName.innerText = playerName.value;
-  maverBar.style.display = "block";
-}
+
 
 function createSoulSeer() {
   let soulsName = document.getElementById("soulsName");
