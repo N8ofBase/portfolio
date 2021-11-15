@@ -661,6 +661,9 @@ class SoulSeer extends Hero {
 class Whisper extends Hero {
 
 }
+class N8 extends Hero {
+
+}
 
 
 
@@ -725,7 +728,12 @@ let explosion = new Ability('Explosion', 'powerful blast with heavy damage', 8,8
 let deathStrike = new Ability("Death Strike", "powerful strike eliminates rivals", 8,0, 4, 0);
 let darkness = new Ability("Darkness", "attack to the eyes that reduces rival's attack by 1", 4,0, 3, 0);
 let doubleStrike = new Ability("Double Strike", "attack twice before rival can blink", 6,6, 5, 0);
-let shadowStrike = new Ability("Shadow Strike", "appear behind rival and strike them in the back", 8,0, 3, 0)
+let shadowStrike = new Ability("Shadow Strike", "appear behind rival and strike them in the back", 8,0, 3, 0);
+
+let punkPunch = new Ability("Punk Punch", "punch in your punk face", 8,0, 3, 0);
+let sonicHarmony = new Ability("Sonic Harmony", "melodious sound waves that captivates rivals", 8,0, 4, 0);
+let bassSolo = new Ability("Bass Solo", "funky bass solo that makes yo booty bounce", 8,8, 5, 0);
+let dancingEyebrows = new Ability("Dancing Eyebrows", "makes rivals question their existence", 8,0, 4, 0);
 
 let hero;
 let healingWater = new Food("Healing Water", "Restores 10 Life",1,10)
@@ -733,6 +741,7 @@ let broadsword = new Weapon("Broadsword & Shield", 6,0);
 let longbow = new Weapon("Longbow & Arrows", 6,0);
 let staff = new Weapon("Staff", 6,0);
 let dagger = new Weapon("Dagger", 6,0);
+let spoon = new Weapon("Plastic Spoon of Justice", 8,0);
 let rival = new Maverick("Maverick", "Maverick", 37, 37, 2, 14, 1, 3, 2, pierce, soulShot, multiShot, bola, longbow, []);
 
 
@@ -740,7 +749,43 @@ function createChampion() {
 
   if (playerName.value == "") {
     alert("Hero name is required");
-  } else {
+  } if(playerName.value == "N8") {
+    hero = new N8(playerName.value, "N8 the Gr8", 88, 88, 8, 18, 8, 8, 8, punkPunch, sonicHarmony, bassSolo, dancingEyebrows, spoon, [])
+     document.getElementById("playerName").style.display = "none";
+    
+    document.getElementById("roles").style.display = "none";
+    heroName.innerText = playerName.value;
+    heroLog.attributes[1].value = "row justify-content-start list-group-item-success text-dark";
+    
+    heroCard.attributes[1].value = "card mx-auto border border-dark border-4 bg-success";
+    heroHead.attributes[1].value = "https://www.dropbox.com/s/yhlp3o7m1cro026/n8head.png?raw=1";
+    heroStats.attributes[1].value = "row align-items-start list-group-item-success";
+    heroLifeTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroLife.innerText = hero.life;
+    heroAttackTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroAttack.innerText = hero.attack;
+    heroDefenseTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroDefense.innerText = hero.defense;
+    heroMagicTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroMagic.innerText = hero.magic;
+    heroSpeedTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroSpeed.innerText = hero.speed;
+    heroCharmTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroCharm.innerText = hero.charm;
+    heroEquipTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroEquip.innerText = hero.weapon.name + " : 1D8";
+    heroAbilities.attributes[1].value = "row list-group-item-success mx-auto";
+    heroAttackBtn.innerHTML = '<button id="heroAttackBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage"><img onclick="attackTarget(rival)" src="https://www.dropbox.com/s/ifrga70cy2xt2tg/n8attackbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroAAbilityBtn.innerHTML = '<button id="heroAAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage by punching you in your punk face. Cooldown: 3"> <img onclick="punkPunch()" src="https://www.dropbox.com/s/rq2a2zcx14k206k/punkpunchbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroMAbilityBtn.innerHTML = '<button id="heroMAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Magic to hit doing 1d8 + Magic damage and making rival stop everything to sing along. Cooldown: 4"><img onclick="sonicHarmony()" src="https://www.dropbox.com/s/qvs3omam36282nj/sonicharmonybtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroSAbilityBtn.innerHTML = '<button id="heroSAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Speed to hit doing 2d8 + Speed damage and making the rival gyrate their hips uncontrollably. Cooldown: 5"><img onclick="bassSolo()" src="https://www.dropbox.com/s/a0dci01nkp27oxb/basssolobtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroCAbilityBtn.innerHTML = '<button id="heroCAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Charm to hit doing 1d8 + Charm damage and makes the rival question their existence. Cooldown: 4"><img onclick="dancingEyebrows()"src="https://www.dropbox.com/s/bcswnhny6l2qbsm/dancingeyebrowsbtn.png?raw=1" style="width: 75px; height: 75px"></button>'
+
+
+    heroBar.style.display = "block";
+  
+  } 
+  else {
     hero = new Champion(playerName.value, "Champion", 42, 42, 3, 15, 3, 1, 1, overpower, radiantStrike, shieldSlam, heal, broadsword, []);
     document.getElementById("playerName").style.display = "none";
     
@@ -782,7 +827,43 @@ function createMaverick() {
 
     if (playerName.value == "") {
     alert("Hero name is required");
-  } else {
+  } if(playerName.value == "N8") {
+    hero = new N8(playerName.value, "N8 the Gr8", 88, 88, 8, 18, 8, 8, 8, punkPunch, sonicHarmony, bassSolo, dancingEyebrows, spoon, [])
+     document.getElementById("playerName").style.display = "none";
+    
+    document.getElementById("roles").style.display = "none";
+    heroName.innerText = playerName.value;
+    heroLog.attributes[1].value = "row justify-content-start list-group-item-success text-dark";
+    
+    heroCard.attributes[1].value = "card mx-auto border border-dark border-4 bg-success";
+    heroHead.attributes[1].value = "https://www.dropbox.com/s/yhlp3o7m1cro026/n8head.png?raw=1";
+    heroStats.attributes[1].value = "row align-items-start list-group-item-success";
+    heroLifeTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroLife.innerText = hero.life;
+    heroAttackTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroAttack.innerText = hero.attack;
+    heroDefenseTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroDefense.innerText = hero.defense;
+    heroMagicTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroMagic.innerText = hero.magic;
+    heroSpeedTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroSpeed.innerText = hero.speed;
+    heroCharmTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroCharm.innerText = hero.charm;
+    heroEquipTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroEquip.innerText = hero.weapon.name + " : 1D8";
+    heroAbilities.attributes[1].value = "row list-group-item-success mx-auto";
+    heroAttackBtn.innerHTML = '<button id="heroAttackBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage"><img onclick="attackTarget(rival)" src="https://www.dropbox.com/s/ifrga70cy2xt2tg/n8attackbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroAAbilityBtn.innerHTML = '<button id="heroAAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage by punching you in your punk face. Cooldown: 3"> <img onclick="punkPunch()" src="https://www.dropbox.com/s/rq2a2zcx14k206k/punkpunchbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroMAbilityBtn.innerHTML = '<button id="heroMAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Magic to hit doing 1d8 + Magic damage and making rival stop everything to sing along. Cooldown: 4"><img onclick="sonicHarmony()" src="https://www.dropbox.com/s/qvs3omam36282nj/sonicharmonybtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroSAbilityBtn.innerHTML = '<button id="heroSAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Speed to hit doing 2d8 + Speed damage and making the rival gyrate their hips uncontrollably. Cooldown: 5"><img onclick="bassSolo()" src="https://www.dropbox.com/s/a0dci01nkp27oxb/basssolobtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroCAbilityBtn.innerHTML = '<button id="heroCAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Charm to hit doing 1d8 + Charm damage and makes the rival question their existence. Cooldown: 4"><img onclick="dancingEyebrows()"src="https://www.dropbox.com/s/bcswnhny6l2qbsm/dancingeyebrowsbtn.png?raw=1" style="width: 75px; height: 75px"></button>'
+
+
+    heroBar.style.display = "block";
+  
+  }
+   else {
     hero = new Maverick(playerName.value, "Maverick", 37, 37, 2, 14, 1, 3, 2, pierce, soulShot, multiShot, bola, longbow, []);
     document.getElementById("playerName").style.display = "none";
     
@@ -825,7 +906,43 @@ function createMaverick() {
 function createSoulSeer() {
       if (playerName.value == "") {
     alert("Hero name is required");
-  } else {
+  }  if(playerName.value == "N8") {
+    hero = new N8(playerName.value, "N8 the Gr8", 88, 88, 8, 18, 8, 8, 8, punkPunch, sonicHarmony, bassSolo, dancingEyebrows, spoon, [])
+     document.getElementById("playerName").style.display = "none";
+    
+    document.getElementById("roles").style.display = "none";
+    heroName.innerText = playerName.value;
+    heroLog.attributes[1].value = "row justify-content-start list-group-item-success text-dark";
+    
+    heroCard.attributes[1].value = "card mx-auto border border-dark border-4 bg-success";
+    heroHead.attributes[1].value = "https://www.dropbox.com/s/yhlp3o7m1cro026/n8head.png?raw=1";
+    heroStats.attributes[1].value = "row align-items-start list-group-item-success";
+    heroLifeTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroLife.innerText = hero.life;
+    heroAttackTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroAttack.innerText = hero.attack;
+    heroDefenseTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroDefense.innerText = hero.defense;
+    heroMagicTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroMagic.innerText = hero.magic;
+    heroSpeedTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroSpeed.innerText = hero.speed;
+    heroCharmTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroCharm.innerText = hero.charm;
+    heroEquipTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroEquip.innerText = hero.weapon.name + " : 1D8";
+    heroAbilities.attributes[1].value = "row list-group-item-success mx-auto";
+    heroAttackBtn.innerHTML = '<button id="heroAttackBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage"><img onclick="attackTarget(rival)" src="https://www.dropbox.com/s/ifrga70cy2xt2tg/n8attackbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroAAbilityBtn.innerHTML = '<button id="heroAAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage by punching you in your punk face. Cooldown: 3"> <img onclick="punkPunch()" src="https://www.dropbox.com/s/rq2a2zcx14k206k/punkpunchbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroMAbilityBtn.innerHTML = '<button id="heroMAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Magic to hit doing 1d8 + Magic damage and making rival stop everything to sing along. Cooldown: 4"><img onclick="sonicHarmony()" src="https://www.dropbox.com/s/qvs3omam36282nj/sonicharmonybtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroSAbilityBtn.innerHTML = '<button id="heroSAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Speed to hit doing 2d8 + Speed damage and making the rival gyrate their hips uncontrollably. Cooldown: 5"><img onclick="bassSolo()" src="https://www.dropbox.com/s/a0dci01nkp27oxb/basssolobtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroCAbilityBtn.innerHTML = '<button id="heroCAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Charm to hit doing 1d8 + Charm damage and makes the rival question their existence. Cooldown: 4"><img onclick="dancingEyebrows()"src="https://www.dropbox.com/s/bcswnhny6l2qbsm/dancingeyebrowsbtn.png?raw=1" style="width: 75px; height: 75px"></button>'
+
+
+    heroBar.style.display = "block";
+  
+  }
+  else {
     hero = new SoulSeer(playerName.value, "Soul Seer", 33, 33, 1, 13, 3, 2, 2, psylance, soulSyphon, mindSpike, explosion, staff, []);
     document.getElementById("playerName").style.display = "none";
 
@@ -866,7 +983,43 @@ function createSoulSeer() {
 function createWhisper() {
    if (playerName.value == "") {
     alert("Hero name is required");
-  } else {
+  } if(playerName.value == "N8") {
+    hero = new N8(playerName.value, "N8 the Gr8", 88, 88, 8, 18, 8, 8, 8, punkPunch, sonicHarmony, bassSolo, dancingEyebrows, spoon, [])
+     document.getElementById("playerName").style.display = "none";
+    
+    document.getElementById("roles").style.display = "none";
+    heroName.innerText = playerName.value;
+    heroLog.attributes[1].value = "row justify-content-start list-group-item-success text-dark";
+    
+    heroCard.attributes[1].value = "card mx-auto border border-dark border-4 bg-success";
+    heroHead.attributes[1].value = "https://www.dropbox.com/s/yhlp3o7m1cro026/n8head.png?raw=1";
+    heroStats.attributes[1].value = "row align-items-start list-group-item-success";
+    heroLifeTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroLife.innerText = hero.life;
+    heroAttackTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroAttack.innerText = hero.attack;
+    heroDefenseTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroDefense.innerText = hero.defense;
+    heroMagicTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroMagic.innerText = hero.magic;
+    heroSpeedTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroSpeed.innerText = hero.speed;
+    heroCharmTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroCharm.innerText = hero.charm;
+    heroEquipTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroEquip.innerText = hero.weapon.name + " : 1D8";
+    heroAbilities.attributes[1].value = "row list-group-item-success mx-auto";
+    heroAttackBtn.innerHTML = '<button id="heroAttackBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage"><img onclick="attackTarget(rival)" src="https://www.dropbox.com/s/ifrga70cy2xt2tg/n8attackbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroAAbilityBtn.innerHTML = '<button id="heroAAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage by punching you in your punk face. Cooldown: 3"> <img onclick="punkPunch()" src="https://www.dropbox.com/s/rq2a2zcx14k206k/punkpunchbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroMAbilityBtn.innerHTML = '<button id="heroMAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Magic to hit doing 1d8 + Magic damage and making rival stop everything to sing along. Cooldown: 4"><img onclick="sonicHarmony()" src="https://www.dropbox.com/s/qvs3omam36282nj/sonicharmonybtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroSAbilityBtn.innerHTML = '<button id="heroSAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Speed to hit doing 2d8 + Speed damage and making the rival gyrate their hips uncontrollably. Cooldown: 5"><img onclick="bassSolo()" src="https://www.dropbox.com/s/a0dci01nkp27oxb/basssolobtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroCAbilityBtn.innerHTML = '<button id="heroCAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Charm to hit doing 1d8 + Charm damage and makes the rival question their existence. Cooldown: 4"><img onclick="dancingEyebrows()"src="https://www.dropbox.com/s/bcswnhny6l2qbsm/dancingeyebrowsbtn.png?raw=1" style="width: 75px; height: 75px"></button>'
+
+
+    heroBar.style.display = "block";
+  
+  }
+   else {
     hero = new Whisper(playerName.value, "Whisper", 35, 35, 3, 14, 1, 2, 2, deathStrike, darkness, doubleStrike, shadowStrike, dagger, []);
     document.getElementById("playerName").style.display = "none";
     
