@@ -749,7 +749,7 @@ function createChampion() {
 
   if (playerName.value == "") {
     alert("Hero name is required");
-  }else if(playerName.value == "N8") {
+  } if(playerName.value == "N8") {
     hero = new N8(playerName.value, "N8 the Gr8", 88, 88, 8, 18, 8, 8, 8, punkPunch, sonicHarmony, bassSolo, dancingEyebrows, spoon, []);
      document.getElementById("playerName").style.display = "none";
     
