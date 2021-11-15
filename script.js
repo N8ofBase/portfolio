@@ -655,6 +655,12 @@ class Champion extends Hero {
 class Maverick extends Hero {
 
 }
+class SoulSeer extends Hero {
+
+}
+class Whisper extends Hero {
+
+}
 
 
 
@@ -697,78 +703,6 @@ function weaponUpgrade(being) {
 
 }
 
-function attackAbilityIncrease(being) {
-    let abilityDie = being.attackAbility.die;
-    let abilityDie2 = being.attackAbility.die2;
-    if(abilityDie == 4 && abilityDie2 == 0) {
-      being.attackAbility.die = 6;
-    }
-    if(abilityDie == 6 && abilityDie2 == 0) {
-      being.attackAbility.die = 8;
-    }
-    if(abilityDie == 8 && abilityDie2 == 0) {
-      being.attackAbility.die = 10;
-    }
-    if(abilityDie == 10 && abilityDie2 == 0) {
-      being.attackAbility.die = 12;
-    }
-    if(abilityDie == 12 && abilityDie2 == 0) {
-      being.attackAbility.die = 6;
-      being.attackAbility.die2 = 6;
-    }
-    if(abilityDie == 6 && abilityDie2 == 6) {
-      being.attackAbility.die = 8;
-      being.attackAbility.die2 = 8;
-    }
-    if(abilityDie == 8 && abilityDie2 == 8) {
-      being.attackAbility.die = 10;
-      being.attackAbility.die2 = 10;
-    }
-    if(abilityDie == 10 && abilityDie2 == 10) {
-      being.attackAbility.die = 12;
-      being.attackAbility.die2 = 12;
-    }
-  }
-
-function abilityUpgrade(being) {
-  
-  if(weaponDie == 6 && weaponDie2 == 0) {
-    being.weapon.die = 8;
-    heroEquip.innerText = being.weapon.name + " : 1D8 "
-  }
-  if(weaponDie == 8 && weaponDie2 == 0) {
-    being.weapon.die = 10;
-    heroEquip.innerText = being.weapon.name + " : 1D10"
-  }
-  if(weaponDie == 10 && weaponDie2 == 0) {
-    being.weapon.die = 12;
-    heroEquip.innerText = being.weapon.name + " : 1D12" 
-  }
-  if(weaponDie == 12 && weaponDie2 == 0) {
-    being.weapon.die = 6;
-    being.weapon.die2 = 6;
-    heroEquip.innerText = being.weapon.name + " : 2D6" 
-  }
-  if(weaponDie == 6 && weaponDie2 == 6) {
-    being.weapon.die = 8;
-    being.weapon.die2 = 8;
-    heroEquip.innerText = being.weapon.name + " : 2D8" 
-  }
-  if(weaponDie == 8 && weaponDie2 == 8) {
-    being.weapon.die = 10;
-    being.weapon.die2 = 10;
-    heroEquip.innerText = being.weapon.name + " : 2D10"  
-  }
-  if(weaponDie == 10 && weaponDie2 == 10) {
-    being.weapon.die = 12;
-    being.weapon.die2 = 12;
-    heroEquip.innerText = being.weapon.name + " : 2D12"
-  }
-
-}
-
-
-
 let battleCache = new Cache([]);
 let enhancements = new Cache([]);
 let calamities = new Cache([]);
@@ -783,7 +717,7 @@ let soulShot = new Ability('Soul Shot', 'shoot an arrow infused with spiritual e
 let multiShot = new Ability('Multi-Shot', 'shoots two arrows at once', 6,6, 4, 0);
 let bola = new Ability('Bola', 'tangles rival reducing their speed by 1', 4,0, 3, 0);
 
-let psylence = new Ability('Psylence', 'psychically close a rivals airway', 6,0, 4, 0);
+let psylance = new Ability('Psylence', 'psychically close a rivals airway', 6,0, 4, 0);
 let soulSyphon = new Ability('Soul Syphon', 'drain rival life to restore yours', 4,0, 4, 0);
 let mindSpike = new Ability('Mind Spike', 'psychically blast a rival mind', 4,0, 3, 0);
 let explosion = new Ability('Explosion', 'powerful blast with heavy damage', 8,8, 5, 0);
@@ -794,19 +728,22 @@ let doubleStrike = new Ability("Double Strike", "attack twice before rival can b
 let shadowStrike = new Ability("Shadow Strike", "appear behind rival and strike them in the back", 8,0, 3, 0)
 
 let hero;
-let rival = new Maverick("Maverick", "Maverick", 37, 37, 2, 14, 1, 3, 2, pierce, soulShot, multiShot, bola, 6, []);
 let healingWater = new Food("Healing Water", "Restores 10 Life",1,10)
 let broadsword = new Weapon("Broadsword & Shield", 6,0);
 let longbow = new Weapon("Longbow & Arrows", 6,0);
+let staff = new Weapon("Staff", 6,0);
+let dagger = new Weapon("Dagger", 6,0);
+let rival = new Maverick("Maverick", "Maverick", 37, 37, 2, 14, 1, 3, 2, pierce, soulShot, multiShot, bola, longbow, []);
+
 
 function createChampion() {
 
-  // if (playerName.value == "") {
-  //   alert("Hero name is required");
-  // } else {
+  if (playerName.value == "") {
+    alert("Hero name is required");
+  } else {
     hero = new Champion(playerName.value, "Champion", 42, 42, 3, 15, 3, 1, 1, overpower, radiantStrike, shieldSlam, heal, broadsword, []);
     document.getElementById("playerName").style.display = "none";
-    document.getElementById("demobtn").style.display = "none";
+    
     document.getElementById("roles").style.display = "none";
     heroName.innerText = playerName.value;
     heroLog.attributes[1].value = "row justify-content-start list-group-item-warning text-dark";
@@ -839,22 +776,22 @@ function createChampion() {
     heroBar.style.display = "block";
   }
 
-// }
+}
 
 function createMaverick() {
 
-    // if (playerName.value == "") {
-  //   alert("Hero name is required");
-  // } else {
+    if (playerName.value == "") {
+    alert("Hero name is required");
+  } else {
     hero = new Maverick(playerName.value, "Maverick", 37, 37, 2, 14, 1, 3, 2, pierce, soulShot, multiShot, bola, longbow, []);
     document.getElementById("playerName").style.display = "none";
-    document.getElementById("demobtn").style.display = "none";
+    
     document.getElementById("roles").style.display = "none";
     heroName.innerText = playerName.value;
     heroLog.attributes[1].value = "row justify-content-start list-group-item-success text-dark";
     
     heroCard.attributes[1].value = "card mx-auto border border-dark border-4 bg-success";
-    heroHead.attributes[1].value = "https://www.dropbox.com/s/a9pj9eomelt941u/championhead.png?raw=1";
+    heroHead.attributes[1].value = "https://www.dropbox.com/s/mci8qlnvbf27dz7/maverickhead.png?raw=1";
     heroStats.attributes[1].value = "row align-items-start list-group-item-success";
     heroLifeTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
     heroLife.innerText = hero.life;
@@ -871,39 +808,100 @@ function createMaverick() {
     heroEquipTxt.attributes[1].value = "bg-success border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
     heroEquip.innerText = hero.weapon.name + " : 1D6";
     heroAbilities.attributes[1].value = "row list-group-item-success mx-auto";
-    heroAttackBtn.innerHTML = '<button id="heroAttackBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d6 + Attack damage"><img onclick="attackTarget(rival)" src="https://www.dropbox.com/s/vgbus0ygz5zo1dr/champattack.png?raw=1" style="width: 75px; height: 75px"></button>';
-    heroAAbilityBtn.innerHTML = '<button id="heroAAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage. Cooldown: 3"> <img onclick="pierce()" src="https://www.dropbox.com/s/6i5vt8xh0f2yi4q/Overpowerbutton.png?raw=1" style="width: 75px; height: 75px"></button>';
-    heroMAbilityBtn.innerHTML = '<button id="heroMAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Magic to hit doing 1d6 + Magic damage. Cooldown: 4"><img onclick="soulShot()" src="https://www.dropbox.com/s/ac2i9337f6qo58q/radiantstrikebutton.png?raw=1" style="width: 75px; height: 75px"></button>';
-    heroSAbilityBtn.innerHTML = '<button id="heroSAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Speed to hit doing 2d6 + Speed damage. Cooldown: 2"><img onclick="multiShot()" src="https://www.dropbox.com/s/v32iyo3njjoci2f/shieldslambutton.png?raw=1" style="width: 75px; height: 75px"></button>';
-    heroCAbilityBtn.innerHTML = '<button id="heroCAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Charm to hit and tangles rival doing 1d4 + Charm and reduce rival speed by 1. Cooldown: 5"><img onclick="bola()"src="https://www.dropbox.com/s/8jmngowtfotvx0r/healbutton.png?raw=1" style="width: 75px; height: 75px"></button>'
+    heroAttackBtn.innerHTML = '<button id="heroAttackBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d6 + Attack damage"><img onclick="attackTarget(rival)" src="https://www.dropbox.com/s/ink29zizk8pizri/maverattack.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroAAbilityBtn.innerHTML = '<button id="heroAAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage. Cooldown: 3"> <img onclick="pierce()" src="https://www.dropbox.com/s/goqg3vosds1bzgt/PierceBtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroMAbilityBtn.innerHTML = '<button id="heroMAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Magic to hit doing 1d6 + Magic damage. Cooldown: 4"><img onclick="soulShot()" src="https://www.dropbox.com/s/5bu66ct5cjeqtc5/soulshotbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroSAbilityBtn.innerHTML = '<button id="heroSAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Speed to hit doing 2d6 + Speed damage. Cooldown: 4"><img onclick="multiShot()" src="https://www.dropbox.com/s/acikre71v4hzbrh/Multishotbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroCAbilityBtn.innerHTML = '<button id="heroCAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Charm to hit and tangles rival doing 1d4 + Charm and reduce rival speed by 1. Cooldown: 5"><img onclick="bola()"src="https://www.dropbox.com/s/tpqh4gg791xynki/Bolabtn.png?raw=1" style="width: 75px; height: 75px"></button>'
 
 
     heroBar.style.display = "block";
   }
 
-// }
+}
 
 
 
 function createSoulSeer() {
-  let soulsName = document.getElementById("soulsName");
-  let soulsBar = document.getElementById("soulsBar");
-  document.getElementById("playerName").style.display = "none";
-  document.getElementById("closeButton").style.display = "none";
-  document.getElementById("roles").style.display = "none";
-  soulsName.innerText = playerName.value;
-  soulsBar.style.display = "block";
+      if (playerName.value == "") {
+    alert("Hero name is required");
+  } else {
+    hero = new SoulSeer(playerName.value, "Soul Seer", 33, 33, 1, 13, 3, 2, 2, psylance, soulSyphon, mindSpike, explosion, staff, []);
+    document.getElementById("playerName").style.display = "none";
+
+    document.getElementById("roles").style.display = "none";
+    heroName.innerText = playerName.value;
+    heroLog.attributes[1].value = "row justify-content-start list-group-item-info text-dark";
+    
+    heroCard.attributes[1].value = "card mx-auto border border-dark border-4 bg-info";
+    heroHead.attributes[1].value = "https://www.dropbox.com/s/wt08t4k9r4s0fha/soulseerhead.png?raw=1";
+    heroStats.attributes[1].value = "row align-items-start list-group-item-info";
+    heroLifeTxt.attributes[1].value = "bg-info border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroLife.innerText = hero.life;
+    heroAttackTxt.attributes[1].value = "bg-info border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroAttack.innerText = hero.attack;
+    heroDefenseTxt.attributes[1].value = "bg-info border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroDefense.innerText = hero.defense;
+    heroMagicTxt.attributes[1].value = "bg-info border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroMagic.innerText = hero.magic;
+    heroSpeedTxt.attributes[1].value = "bg-info border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroSpeed.innerText = hero.speed;
+    heroCharmTxt.attributes[1].value = "bg-info border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroCharm.innerText = hero.charm;
+    heroEquipTxt.attributes[1].value = "bg-info border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroEquip.innerText = hero.weapon.name + " : 1D6";
+    heroAbilities.attributes[1].value = "row list-group-item-info mx-auto";
+    heroAttackBtn.innerHTML = '<button id="heroAttackBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d6 + Attack damage"><img onclick="attackTarget(rival)" src="https://www.dropbox.com/s/p1xenupgz76dcuu/soulweapon.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroAAbilityBtn.innerHTML = '<button id="heroAAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d6 + Attack damage. Cooldown: 4"> <img onclick="psylance()" src="https://www.dropbox.com/s/qo0fe8riq14uvm7/psylancebtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroMAbilityBtn.innerHTML = '<button id="heroMAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Magic to hit doing 1d4 + Magic damage to rival, while healing Soul Seer same amount. Cooldown: 5"><img onclick="soulSyphon()" src="https://www.dropbox.com/s/lo17u0o330wmjdc/soulsyphonbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroSAbilityBtn.innerHTML = '<button id="heroSAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Speed to hit doing 1d4 + Speed damage. Cooldown: 3"><img onclick="mindSpike()" src="https://www.dropbox.com/s/mmrp61hbmfczl1x/mindspikebtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroCAbilityBtn.innerHTML = '<button id="heroCAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Charm to hit doing 2d8 + Charm damage. Cooldown: 5"><img onclick="explosion()"src="https://www.dropbox.com/s/2cixhm822kysrx2/explosionbtn.png?raw=1" style="width: 75px; height: 75px"></button>'
+
+
+    heroBar.style.display = "block";
+  }
 
 }
 
 function createWhisper() {
-  let whispName = document.getElementById("whispName");
-  let whispBar = document.getElementById("whispBar");
-  document.getElementById("playerName").style.display = "none";
-  document.getElementById("closeButton").style.display = "none";
-  document.getElementById("roles").style.display = "none";
-  whispName.innerText = playerName.value;
-  whispBar.style.display = "block";
+   if (playerName.value == "") {
+    alert("Hero name is required");
+  } else {
+    hero = new Whisper(playerName.value, "Whisper", 35, 35, 3, 14, 1, 2, 2, deathStrike, darkness, doubleStrike, shadowStrike, dagger, []);
+    document.getElementById("playerName").style.display = "none";
+    
+    document.getElementById("roles").style.display = "none";
+    heroName.innerText = playerName.value;
+    heroLog.attributes[1].value = "row justify-content-start list-group-item-secondary text-dark";
+    
+    heroCard.attributes[1].value = "card mx-auto border border-dark border-4 bg-secondary";
+    heroHead.attributes[1].value = "https://www.dropbox.com/s/yn3bqdktcv8uvlw/whisperhead.png?raw=1";
+    heroStats.attributes[1].value = "row align-items-start list-group-item-secondary";
+    heroLifeTxt.attributes[1].value = "bg-secondary border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroLife.innerText = hero.life;
+    heroAttackTxt.attributes[1].value = "bg-secondary border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroAttack.innerText = hero.attack;
+    heroDefenseTxt.attributes[1].value = "bg-secondary border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroDefense.innerText = hero.defense;
+    heroMagicTxt.attributes[1].value = "bg-secondary border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroMagic.innerText = hero.magic;
+    heroSpeedTxt.attributes[1].value = "bg-secondary border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroSpeed.innerText = hero.speed;
+    heroCharmTxt.attributes[1].value = "bg-secondary border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroCharm.innerText = hero.charm;
+    heroEquipTxt.attributes[1].value = "bg-secondary border border-dark border-2 border-top-0 fw-bold text-dark m-0 p-0";
+    heroEquip.innerText = hero.weapon.name + " : 1D6";
+    heroAbilities.attributes[1].value = "row list-group-item-secondary mx-auto";
+    heroAttackBtn.innerHTML = '<button id="heroAttackBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d6 + Attack damage"><img onclick="attackTarget(rival)" src="https://www.dropbox.com/s/udhdgckxpo9m1mk/whisperweapon.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroAAbilityBtn.innerHTML = '<button id="heroAAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage. Cooldown: 4"> <img onclick="deathStrike()" src="https://www.dropbox.com/s/yy2okzyfzkot65z/deathstrikebtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroMAbilityBtn.innerHTML = '<button id="heroMAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Magic to hit doing 1d4 + Magic damage to rival, and reducing rival Attack by 1. Cooldown: 5"><img onclick="darkness()" src="https://www.dropbox.com/s/kvzdf69jjbrasq6/darknessbtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroSAbilityBtn.innerHTML = '<button id="heroSAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Speed to hit doing 2d6 + Speed damage. Cooldown: 3"><img onclick="doubleStrike()" src="https://www.dropbox.com/s/phivibvbtwnzsls/doublestrikebtn.png?raw=1" style="width: 75px; height: 75px"></button>';
+    heroCAbilityBtn.innerHTML = '<button id="heroCAbilityBtn" class="btn mx-auto p-0" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Charm to hit doing 1d8 + Charm damage. Cooldown: 4"><img onclick="shadowStrike()"src="https://www.dropbox.com/s/7g2lte0cjf1y3qf/shadowstrikebtn.png?raw=1" style="width: 75px; height: 75px"></button>'
+
+
+    heroBar.style.display = "block";
+  }
+
 }
 
 function turn(hero) {
@@ -917,25 +915,3 @@ function battle(hero, rival) {
     battleOrder[0]
   }
 }
-
-// function createChampion() {
-//   let display = document.getElementById("display")
-//   let champiBar = document.getElementById("heroBar");
-//   let heroName = document.getElementById('name');
-//   let displayName = document.getElementById('heroName');
-//   hero = new Champion(heroName.value, "Champion", 42,42,3,15,3,1,1, overpower, radiantStrike, shieldSlam, heal, 6,0);
-//   document.getElementById("start").style.display = "block";
-//   display.style.display = "none";
-//   displayName.innerHTML = "<u><b>" + heroName.value + "</b></u>"; 
-//   document.getElementById("heroLife").innerText = hero.life;
-//   document.getElementById("heroAttack").innerText = hero.attack;
-//   document.getElementById("heroDefense").innerText = hero.defense;
-//   document.getElementById("heroMagic").innerText = hero.magic;
-//   document.getElementById("heroSpeed").innerText = hero.speed;
-//   document.getElementById("heroCharm").innerText = hero.charm;
-//   document.getElementById("heroAttackBtn").innerHTML = '<button id="heroAttackBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack(' + hero.attack + ') to hit, doing 1d' + hero.weapon + ' + Attack(' + hero.attack + ') damage"><img onclick="hero.attackTarget(rival)"src="https://www.dropbox.com/s/vgbus0ygz5zo1dr/champattack.png?raw=1" style="width: 75px; height: 75px"></button>';
-//   document.getElementById("heroAAbilityBtn").innerHTML = '<button id="heroAAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage. Cooldown: 3"><img onclick="overpower()"src="https://www.dropbox.com/s/6i5vt8xh0f2yi4q/Overpowerbutton.png?raw=1" style="width: 75px; height: 75px"></button>';
-//   document.getElementById("heroMAbilityBtn").innerHTML ='<button id="heroMAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Magic to hit doing 2d6 + Magic damage. Cooldown: 4"><img onclick="radiantStrike()"src="https://www.dropbox.com/s/ac2i9337f6qo58q/radiantstrikebutton.png?raw=1" style="width: 75px; height: 75px"></button>';
-//   document.getElementById("heroSAbilityBtn").innerHTML = '<button id="heroSAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Speed to hit doing 1d4 + Speed damage. Cooldown: 2"><img onclick="shieldSlam()"src="https://www.dropbox.com/s/v32iyo3njjoci2f/shieldslambutton.png?raw=1" style="width: 75px; height: 75px"></button>';
-//   document.getElementById("heroCAbilityBtn").innerHTML = '<button id="heroCAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="Restores life equal to 1d6 + Charm. Cooldown: 5">  <img onclick="heal()"src="https://www.dropbox.com/s/8jmngowtfotvx0r/healbutton.png?raw=1" style="width: 75px; height: 75px"></button>';
-// }
