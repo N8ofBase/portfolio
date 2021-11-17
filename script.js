@@ -111,8 +111,12 @@ function calamityRoll(being) {
       heroLog.innerHTML = "<p><b>" + being.name + " doesn't quite feel 100% Maybe it was some bad Jeewa Fruit? " + being.name + "'s life is cut in half.</b></p>";
       break;
     case 4:
-      being.weapon = 1;
+      being.weapon.die = 4;
+      being.weapon.die2= 0;
+      heroEquip.innerText = being.weapon.name + " : 1D4 ";
+      if(being.defense > 10) {
       being.defense = 10;
+      }
       heroDefense.innerText = being.defense;
       heroLog.innerHTML = "<p><b>" + being.name + " probably should have paid a little more for the premium gear. " + being.name + "'s weapon and armor are broken.</b></p>";
       break;
@@ -183,8 +187,12 @@ function calamityRoll(being) {
       heroLog.innerHTML = "<p><b>" + being.name + " doesn't quite feel 100% Probably should have boiled that batch of Halowart before they ate it yesterday. " + being.name + "'s life is cut in half.</b></p>";
       break;
     case 17:
-      being.weapon = 1;
+      being.weapon.die = 4;
+      being.weapon.die2 = 0;
+      heroEquip.innerText = being.weapon.name + " : 1D4 ";
+      if(being.defense > 10) {
       being.defense = 10;
+      }
       heroDefense.innerText = being.defense;
       heroLog.innerHTML = "<p><b>" + being.name + " probably shouldn't have gotten gear from the discount bin. " + being.name + "'s weapon and armor are broken.</b></p>";
       break;
@@ -363,6 +371,7 @@ class Being {
 
   rollD20() {
     let roll = Math.floor(Math.random() * 20) + 1;
+  
     return roll;
   }
 
@@ -428,6 +437,15 @@ class Hero extends Being {
       let newCalamity = new bootstrap.Modal(calamityModal);
       document.getElementById("heroCalamity").innerHTML = `<p><b>Luck laughs in the face of ` + this.name + ` as they roll a 1. Now ` + this.name + ` must further test their luck by rolling the Calamity Die!</b></p>`;
       newCalamity.toggle();
+      break;
+      case 8:
+      heroLog.innerHTML = `<p><b>` + this.name + ` rolled an <u>` + roll + `</u></b></p>`;
+      break;
+      case 11:
+      heroLog.innerHTML = `<p><b>` + this.name + ` rolled an <u>` + roll + `</u></b></p>`;
+      break;
+      case 18:
+      heroLog.innerHTML = `<p><b>` + this.name + ` rolled an <u>` + roll + `</u></b></p>`;
       break;
       case 20:
       let newEnhance = new bootstrap.Modal(enhanceModal);
@@ -671,6 +689,10 @@ function weaponUpgrade(being) {
   let weaponDie = being.weapon.die;
   let weaponDie2 = being.weapon.die2;
 
+  if(weaponDie == 4 && weaponDie2 == 0) { 
+    being.weapon.die = 6;
+    heroEquip.innerText = being.weapon.name + " : 1D6 "
+  }
   if(weaponDie == 6 && weaponDie2 == 0) {
     being.weapon.die = 8;
     heroEquip.innerText = being.weapon.name + " : 1D8 "
@@ -749,7 +771,7 @@ function createChampion() {
 
   if (playerName.value == "") {
     alert("Hero name is required");
-  } if(playerName.value == "N8") {
+  }else if(playerName.value == "N8") {
     hero = new N8(playerName.value, "N8 the Gr8", 88, 88, 8, 18, 8, 8, 8, punkPunch, sonicHarmony, bassSolo, dancingEyebrows, spoon, []);
      document.getElementById("playerName").style.display = "none";
     
@@ -827,7 +849,7 @@ function createMaverick() {
 
     if (playerName.value == "") {
     alert("Hero name is required");
-  } if(playerName.value == "N8") {
+  }else if(playerName.value == "N8") {
     hero = new N8(playerName.value, "N8 the Gr8", 88, 88, 8, 18, 8, 8, 8, punkPunch, sonicHarmony, bassSolo, dancingEyebrows, spoon, [])
      document.getElementById("playerName").style.display = "none";
     
@@ -906,7 +928,7 @@ function createMaverick() {
 function createSoulSeer() {
       if (playerName.value == "") {
     alert("Hero name is required");
-  }  if(playerName.value == "N8") {
+  }else if(playerName.value == "N8") {
     hero = new N8(playerName.value, "N8 the Gr8", 88, 88, 8, 18, 8, 8, 8, punkPunch, sonicHarmony, bassSolo, dancingEyebrows, spoon, [])
      document.getElementById("playerName").style.display = "none";
     
@@ -983,7 +1005,7 @@ function createSoulSeer() {
 function createWhisper() {
    if (playerName.value == "") {
     alert("Hero name is required");
-  } if(playerName.value == "N8") {
+  }else if(playerName.value == "N8") {
     hero = new N8(playerName.value, "N8 the Gr8", 88, 88, 8, 18, 8, 8, 8, punkPunch, sonicHarmony, bassSolo, dancingEyebrows, spoon, [])
      document.getElementById("playerName").style.display = "none";
     
