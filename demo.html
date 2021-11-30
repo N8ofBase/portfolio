@@ -10,7 +10,7 @@
 	<link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body style="background-color: black; overflow-x: hidden">
+<body class="text-center" style="background-color: black; overflow-x: hidden">
 
     <main class="text-light">
 
@@ -50,6 +50,8 @@
         
       </div>
       <div class="modal-body">
+        <div class="col m-0">
+          <div id="heroStatIncrease"></div></div>
         <button type="button" class="btn" onclick="hero.attackIncrease(heroAttack)" data-bs-dismiss="modal">Attack +1</button>
         <button type="button" class="btn" onclick="hero.magicIncrease(heroMagic)" data-bs-dismiss="modal">Magic +1</button>
         <button type="button" class="btn" onclick="hero.speedIncrease(heroSpeed)" data-bs-dismiss="modal">Speed +1</button>
@@ -68,6 +70,8 @@
         
       </div>
       <div class="modal-body">
+        <div class="col m-0">
+          <div id="heroAbilityIncrease"></div></div>
         <button type="button" class="btn" onclick="hero.attackAbilityIncrease()" data-bs-dismiss="modal">Attack Ability +</button>
         <button type="button" class="btn" onclick="hero.magicAbilityIncrease()" data-bs-dismiss="modal">Magic Ability +</button>
         <button type="button" class="btn" onclick="hero.speedAbilityIncrease()" data-bs-dismiss="modal">Speed Ability +</button>
@@ -380,8 +384,8 @@
  </div>
 </div>
 
-  <div id="rivalBar" class="col-8 align-self-center mx-auto">
-      <img style="max-width: 250px" class="w-100">
+  <div id="rivalBar" class="col-8 align-self-center mx-auto" style="display:none">
+      <img src="https://www.dropbox.com/s/aqhdnu63ad2dafa/Maverick.png?raw=1" style="max-width: 250px" class="w-100">
     </div>
 
 <div id="logs" class="container" style="display:block; max-width: 500px">
@@ -475,8 +479,8 @@
     <div id="heroAbilities" class="row list-group-item-warning mx-auto">
     <div class="col container-fluid list-group list-group-horizontal d-flex mx-auto">
       <div class="mx-auto">
-        <button id="heroAttackBtn" type="button" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d6 + Attack damage">
-        <img  onclick="attackTarget(hero)"src="https://www.dropbox.com/s/vgbus0ygz5zo1dr/champattack.png?raw=1" style="width: 75px; height: 75px">
+        <button id="heroAttackBtn" type="button" class="btn mx-auto" onclick="hero.attackTarget(hero)"  data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d6 + Attack damage">
+        <img src="https://www.dropbox.com/s/vgbus0ygz5zo1dr/champattack.png?raw=1" style="width: 75px; height: 75px">
         </button>
         <button id="heroAAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage. Cooldown: 3">
         <img onclick="overpower()"src="https://www.dropbox.com/s/6i5vt8xh0f2yi4q/Overpowerbutton.png?raw=1" style="width: 75px; height: 75px"></button>
@@ -486,9 +490,15 @@
         <img onclick="shieldSlam()"src="https://www.dropbox.com/s/v32iyo3njjoci2f/shieldslambutton.png?raw=1" style="width: 75px; height: 75px"></button>
         <button id="heroCAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="Restores life equal to 1d6 + Charm. Cooldown: 5">
         <img onclick="heal()"src="https://www.dropbox.com/s/8jmngowtfotvx0r/healbutton.png?raw=1" style="width: 75px; height: 75px"></button>
+        <button id="healingWaterBtn" type="button" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="Restores 10 Life. Takes 1 Action">
+        <img  onclick="hero.consume(hero.pack[0])" src="https://www.dropbox.com/s/lqru08j8ceepub8/healingwater.png?raw=1" style="width: 75px; height: 75px">
+        
+        </button>
+        <p id="healingWaterCount" class="mx-auto fw-bold" style="display: inline">X 0</p>
       </div>
     </div>
     </div>
+   
       <div class="card-footer fw-bold list-group-item-danger text-center mx-auto border border-top d-grid p-2">
         <button id="endturn" type="button"  class="btn btn-danger" onclick="endTurn(hero)">
           END TURN

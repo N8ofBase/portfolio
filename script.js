@@ -45,6 +45,8 @@ let heroAAbilityBtn = document.getElementById("heroAAbilityBtn");
 let heroMAbilityBtn = document.getElementById("heroMAbilityBtn");
 let heroSAbilityBtn = document.getElementById("heroSAbilityBtn");
 let heroCAbilityBtn = document.getElementById("heroCAbilityBtn");
+let heroHealingWaterBtn = document.getElementById("healingWaterBtn");
+let heroHealingWaterCount = document.getElementById("healingWaterCount");
 let heroLog = document.getElementById("heroLog");
 let rivalLog = document.getElementById("rivalLog");
 let enhanceBtn = document.getElementById("echoose");
@@ -52,6 +54,8 @@ let statModal = document.getElementById("statModal");
 let calamityModal = document.getElementById("calamityModal");
 let abilityModal = document.getElementById("abilityModal");
 let enhanceModal = document.getElementById("enhanceModal");
+
+let rivalBar = document.getElementById("rivalBar");
 
 
 
@@ -208,12 +212,17 @@ function calamityRoll(being) {
 
 function enhanceRoll(being) {
   let enhanceRoll = being.rollD20();
+  
+let newStat = new bootstrap.Modal(statModal);
+let newAbility = new bootstrap.Modal(abilityModal);
   switch (enhanceRoll) {
     case 1:
       heroLog.innerHTML = "<p><b>Wow! " + being.name + " rolled a " + enhanceRoll + " for their enhancement which means they get nothing. " + being.name + " is unlucky even when getting lucky...</b></p>";
       break;
     case 2:
-      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
+      
+      document.getElementById("heroStatIncrease").innerHTML = `<p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p>`
+      newStat.toggle();
       break;
     case 3:
       being.maxLife += 5;
@@ -223,10 +232,12 @@ function enhanceRoll(being) {
     case 4:
       if(!hero.pack.includes(healingWater)) {
       hero.pack.push(healingWater);
+      heroHealingWaterCount.innerHTML ="<p><b> X " + hero.pack[0].quantity + "</b></p>";
       heroLog.innerHTML = "<p><b>" + being.name + " is so lucky that a vial of healing water magically appears in their pack.</b></p>";
       break;
     } else {
       hero.pack[0].increase();
+      heroHealingWaterCount.innerHTML ="<p><b> X " + hero.pack[0].quantity + "</b></p>";
       heroLog.innerHTML = "<p><b>" + being.name + " is so lucky that a vial of healing water magically appears in their pack.</b></p>";
       break;
     }
@@ -235,15 +246,20 @@ function enhanceRoll(being) {
       heroLog.innerHTML = "<p><b>" + being.name + " has gained confidence in using their weapon.</b></p>";
       break;
     case 6:
-      heroLog.innerHTML = `<div class="col m-0"><p><b>` + being.name + `'s abilities have improved through hard work! Choose an ability to upgrade.</b></p><div class='text-center m-3'><img src="images/abilityup.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#abilityModal"></div></div>`;
+    
+      document.getElementById("heroAbilityIncrease").innerHTML = `<p><b>` + being.name + `'s abilities have improved through hard work! Choose an ability to upgrade.</b></p>`
+      newAbility.toggle();
+     
       break;
     case 7:
     if(!hero.pack.includes(healingWater)) {
       hero.pack.push(healingWater);
+      heroHealingWaterCount.innerHTML ="<p><b> X " + hero.pack[0].quantity + "</b></p>";
       heroLog.innerHTML = "<p><b>" + being.name + " is so lucky that a vial of healing water magically appears in their pack.</b></p>";
       break;
     } else {
       hero.pack[0].increase();
+      heroHealingWaterCount.innerHTML ="<p><b> X " + hero.pack[0].quantity + "</b></p>";
       heroLog.innerHTML = "<p><b>" + being.name + " is so lucky that a vial of healing water magically appears in their pack.</b></p>";
       break;
     }
@@ -254,10 +270,14 @@ function enhanceRoll(being) {
       heroLog.innerHTML = "<p><b>" + being.name + " feels renewed motivation and energy! " + being.name + "'s life increases by 10.</b></p>";
       break;
     case 9:
-      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
+      document.getElementById("heroAbilityIncrease").innerHTML = `<p><b>` + being.name + `'s abilities have improved through hard work! Choose an ability to upgrade.</b></p>`
+      newAbility.toggle();
+      
       break;
     case 10:
-      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
+      
+      document.getElementById("heroStatIncrease").innerHTML = `<p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p>`
+      newStat.toggle();
       break;
     case 11:
       being.maxLife += 5;
@@ -266,16 +286,20 @@ function enhanceRoll(being) {
       break;
     case 12:
       being.maxLife += 5;
-      heroLog.innerHTML = `<div class="col m-0"><p><b>` + being.name + ` gains 5 Life and their abilities have improved through hard work! Choose an ability to upgrade.</b></p><div class='text-center m-3'><img src="images/abilityup.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#abilityModal"></div></div>`;
+      document.getElementById("heroAbilityIncrease").innerHTML = `<p><b>` + being.name + `gains 5 Life and their abilities have improved through hard work! Choose an ability to upgrade.</b></p>`
+      newAbility.toggle();
+      
       break;
     case 13:
       being.maxLife += 5;
       if(!being.pack.includes(healingWater)) {
       hero.pack.push(healingWater);
+      heroHealingWaterCount.innerHTML ="<p><b> X " + hero.pack[0].quantity + "</b></p>";
       heroLog.innerHTML = "<p><b>" + being.name + " is so lucky that a vial of healing water magically appears in their pack and their Life increased by 5!</b></p>";
       break;
     } else {
       being.pack[0].increase();
+      heroHealingWaterCount.innerHTML ="<p><b> X " + hero.pack[0].quantity + "</b></p>";
       heroLog.innerHTML = "<p><b>" + being.name + " is so lucky that a vial of healing water magically appears in their pack and their Life increased by 5!</b></p>";
       break;
     }
@@ -288,7 +312,8 @@ function enhanceRoll(being) {
       heroLog.innerHTML = "<p><b>After working on their footwork, " + being.name + "'s Defense increases by 1!</b></p>";
       break;
     case 16:
-      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
+      document.getElementById("heroStatIncrease").innerHTML = `<p><b>That extra practice paid off, ` + being.name + ` gets to increase their Attack, Magic, Speed, OR Charm by 1.</b></p>`
+      newStat.toggle();
       break;
     case 17:
       being.maxLife += 10;
@@ -300,12 +325,14 @@ function enhanceRoll(being) {
       being.maxLife += 10;
       being.life = being.maxLife;
       heroLife.innerText = being.life;
-      heroLog.innerHTML = `<div class="col m-0"><p><b>After getting some really good sleep last night, ` + being.name + ` gains 10 Life and an increase to Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
+      document.getElementById("heroStatIncrease").innerHTML = `<p><b>After getting some really good sleep last night, ` + being.name + ` gains 10 Life and an increase to Attack, Magic, Speed, OR Charm by 1.</b></p>`
+      newStat.toggle();
       
       break;
       case 19:
       weaponUpgrade(being);
-      heroLog.innerHTML = `<div class="col m-0"><p><b>That extra practice last night, gave ` + being.name + `'s weapon better balance and an increase to Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
+      document.getElementById("heroStatIncrease").innerHTML = `<p><b>That extra practice last night, gave ` + being.name + `'s weapon better balance and an increase to Attack, Magic, Speed, OR Charm by 1.</b></p>`
+      newStat.toggle();
       
       break;
       case 20:
@@ -313,7 +340,8 @@ function enhanceRoll(being) {
       being.life = being.maxLife;
       heroLife.innerText = being.life;
       defenseIncrease(being, heroDefense);
-      heroLog.innerHTML = `<div class="col m-0"><p><b>Luck smiles on ` + being.name + `. Granting + 10 to Life, +1 to Defense, and an increase to Attack, Magic, Speed, OR Charm by 1.</b></p><div class='text-center m-3'><img src="images/statDie.png" type="button" style="width:100px" class="btn" data-bs-toggle="modal" data-bs-target="#statModal"></div></div>`;
+      document.getElementById("heroStatIncrease").innerHTML = `<p><b>Luck smiles on ` + being.name + `. Granting + 10 to Life, +1 to Defense, and an increase to Attack, Magic, Speed, OR Charm by 1.</b></p>`
+      newStat.toggle();
       
   }
 }
@@ -371,33 +399,33 @@ class Being {
 
   rollD20() {
     let roll = Math.floor(Math.random() * 20) + 1;
-  
+    
     return roll;
   }
 
 
-  attackTarget(target) {
-    let attackRoll = this.rollD20();
-    let bonus = this.attack;
-    let attackNum = attackRoll + bonus;
+  // attackTarget(target) {
+  //   let attackRoll = this.rollD20();
+  //   let bonus = this.attack;
+  //   let attackNum = attackRoll + bonus;
+  //   let weapon = Math.floor(Math.random() * this.weapon.die) + 1;
+  //     let damage = weapon + bonus;
 
-    switch (attackRoll) {
-      case 1:
-    }
+  //   if (attackRoll == 20) {
+  //     damage = this.weapon.die + this.weapon.die2 + bonus;
+  //     target.life = target.life - damage;
+  //     heroLog.innerHTML = '<p><b>' + this.name + ' rolled a 20 doing maximum damage equal to ' + damage + '</b></p>';
+  //   }
+  //   if (attackNum <= target.defense) {
+      
+  //     heroLog.innerHTML = '<p><b>' + this.name + ' rolls an attack of : ' + attackRoll + ' + Attack(' + this.attack + ') which does not overcome ' + target.name + "'s defenses</b></p>";
+  //   } else {
 
-    if (attackNum <= target.defense) {
-      document.getElementById("heroLogTurn").style.display = 'block';
-      heroLog.innerHTML = '<p><b>' + this.name + ' rolls an attack of : ' + attackRoll + ' + Attack(' + this.attack + ') which does not overcome ' + target.name + "'s defenses</b></p>";
-    } else {
-      document.getElementById("heroLogTurn").style.display = 'block';
-      let weapon = Math.floor(Math.random() * this.weapon) + 1;
-      let damage = weapon + bonus;
-      console.log(damage);
-      target.life = target.life - damage;
-      document.getElementById("heroLogTurn").innerHTML = '<p><b>' + this.name + ' rolls an attack of : ' + attackRoll + ' + Attack(' + this.attack + ') which penetrates ' + target.name + "'s defenses doing " + damage + ' damage!</b></p>';
+  //     target.life = target.life - damage;
+  //     heroLog.innerHTML = '<p><b>' + this.name + ' rolls an attack of : ' + attackRoll + ' + Attack(' + this.attack + ') which penetrates ' + target.name + "'s defenses doing " + damage + ' damage!</b></p>';
 
-    }
-  }
+  //   }
+  // }
   search() {
     let searchRoll = this.rollD20() + this.charm;
     return searchRoll;
@@ -457,6 +485,32 @@ class Hero extends Being {
     }
 
     return roll;
+  }
+
+  attackTarget(target) {
+    let attackRoll = this.heroRollD20();
+    let bonus = this.attack;
+    let attackNum = attackRoll + bonus;
+    let weapon = Math.floor(Math.random() * this.weapon.die) + 1;
+    
+    let damage = weapon + bonus;
+    
+    if (attackRoll == 20) {
+      damage = this.weapon.die + this.weapon.die2 + bonus;
+      target.life = target.life - damage;
+      heroLife.innerText = target.life;
+      heroLog.innerHTML = '<p><b>' + this.name + ' rolled a 20 doing maximum damage equal to ' + damage + '</b></p>';
+    }
+    else if (attackNum <= target.defense) {
+      
+      heroLog.innerHTML = '<p><b>' + this.name + ' rolls an attack of : ' + attackRoll + ' + Attack(' + this.attack + ') which does not overcome ' + target.name + "'s defenses</b></p>";
+    } else {
+
+      target.life = target.life - damage;
+      heroLife.innerText = target.life;
+      heroLog.innerHTML = '<p><b>' + this.name + ' rolls an attack of : ' + attackRoll + ' + Attack(' + this.attack + ') which penetrates ' + target.name + "'s defenses doing " + damage + ' damage!</b></p>';
+
+    }
   }
 
   attackAbilityIncrease() {
