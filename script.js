@@ -80,6 +80,26 @@ function closeRoles() {
   document.getElementById('roleButton').innerHTML = '<button id="roleButton" class="btn-secondary btn-lg my-4" onclick="displayRoles()">Choose Your Role</button>';
 }
 
+function battleOrder(hero, rival) {
+  let order = [];
+  hero.orderNum = hero.orderRoll();
+  rival.orderNum = rival.orderRoll();
+  order.push() 
+  order.push(hero, rival);
+    
+    order.sort(function(a, b){return b.orderNum-a.orderNum});
+    
+    return order;
+}
+
+function battle(hero, rival) {
+  battleOrder(hero, rival);
+
+}
+
+function rivalTurn(hero, rival) {
+
+}
 
 function calamityRoll(being) {
   let calamityRoll = being.rollD20();
@@ -393,8 +413,8 @@ class Ability {
 }
 
 class Being {
-  constructor(name, title, maxLife, life, attack, defense, magic, speed, charm, weapon, pack) {
-    this.name = name; this.title = title; this.maxLife = maxLife; this.life = life; this.attack = attack; this.defense = defense; this.magic = magic; this.speed = speed; this.charm = charm; this.weapon = weapon; this.pack = pack;
+  constructor(name, title, maxLife, life, attack, defense, magic, speed, charm, weapon, pack, orderNum) {
+    this.name = name; this.title = title; this.maxLife = maxLife; this.life = life; this.attack = attack; this.defense = defense; this.magic = magic; this.speed = speed; this.charm = charm; this.weapon = weapon; this.pack = pack; this.orderNum=orderNum;
   }
 
   rollD20() {
@@ -498,7 +518,7 @@ class Hero extends Being {
     if (attackRoll == 20) {
       damage = this.weapon.die + this.weapon.die2 + bonus;
       target.life = target.life - damage;
-      heroLife.innerText = target.life;
+      
       heroLog.innerHTML = '<p><b>' + this.name + ' rolled a 20 doing maximum damage equal to ' + damage + '</b></p>';
     }
     else if (attackNum <= target.defense) {
@@ -507,7 +527,7 @@ class Hero extends Being {
     } else {
 
       target.life = target.life - damage;
-      heroLife.innerText = target.life;
+      
       heroLog.innerHTML = '<p><b>' + this.name + ' rolls an attack of : ' + attackRoll + ' + Attack(' + this.attack + ') which penetrates ' + target.name + "'s defenses doing " + damage + ' damage!</b></p>';
 
     }
@@ -702,8 +722,40 @@ defenseIncrease(id) {
   id.innerText = this.defense;
   heroLog.innerHTML = `<p><b>` + this.name + `'s Defense increased by 1!</b></p>`;
 }
+
   
 }
+
+class Rival extends Being {
+
+  attackTarget(target) {
+    let attackRoll = this.rollD20();
+    let bonus = this.attack;
+    let attackNum = attackRoll + bonus;
+    let weapon = Math.floor(Math.random() * this.weapon.die) + 1;
+    
+    let damage = weapon + bonus;
+    
+    if (attackRoll == 20) {
+      damage = this.weapon.die + this.weapon.die2 + bonus;
+      target.life = target.life - damage;
+      heroLife.innerText = target.life;
+      rivalLog.innerHTML = '<p><b>' + this.name + ' rolled a 20 doing maximum damage equal to ' + damage + '</b></p>';
+    }
+    else if (attackNum <= target.defense) {
+      
+      rivalLog.innerHTML = '<p><b>' + this.name + ' rolls an attack of : ' + attackRoll + ' + Attack(' + this.attack + ') which does not overcome ' + target.name + "'s defenses</b></p>";
+    } else {
+
+      target.life = target.life - damage;
+      heroLife.innerText = target.life;
+      rivalLog.innerHTML = '<p><b>' + this.name + ' rolls an attack of : ' + attackRoll + ' + Attack(' + this.attack + ') which penetrates ' + target.name + "'s defenses doing " + damage + ' damage!</b></p>';
+
+    }
+  }
+
+}
+
 class Champion extends Hero {
 
   overpower() {
@@ -818,7 +870,7 @@ let longbow = new Weapon("Longbow & Arrows", 6,0);
 let staff = new Weapon("Staff", 6,0);
 let dagger = new Weapon("Dagger", 6,0);
 let spoon = new Weapon("Plastic Spoon of Justice", 8,0);
-let rival = new Maverick("Maverick", "Maverick", 37, 37, 2, 14, 1, 3, 2, pierce, soulShot, multiShot, bola, longbow, []);
+let rival = new Rival("Maverick", "Maverick", 37, 37, 2, 14, 1, 3, 2, longbow, []);
 
 
 function createChampion() {
@@ -895,6 +947,7 @@ function createChampion() {
 
 
     heroBar.style.display = "block";
+    
   }
 
 }
@@ -1133,14 +1186,18 @@ function createWhisper() {
 
 }
 
-function turn(hero) {
+function startBattle() {
+  document.getElementById('titleIntro').style.display = "none";
+  document.getElementById('startBattle').style.display = "none";
+  document.getElementById('head').style.display = "none";
+  rivalBar.style.display = "block";
+  
+}
+
+function endTurn(hero, rival) {
+  rival.attackTarget(hero);
 
 }
 
-function battle(hero, rival) {
-  let battleOrder = [hero, rival];
-  battleOrder.sort(function (a, b) { return b.orderRoll() - a.orderRoll() });
-  while (rival.life > 0) {
-    battleOrder[0]
-  }
-}
+
+

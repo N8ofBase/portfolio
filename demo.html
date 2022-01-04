@@ -16,7 +16,7 @@
 
      
     <header>
-      <div class="row text-center">
+      <div class="row text-center" id="head">
       <a href="index.html">
         <img src="https://www.dropbox.com/s/13qsykorcxod5r6/Ico.png?raw=1" alt="Icosahedron D20 logo" class="" style="width: 150px"></a>
       <h3 id="mainHeading">The Icosahedron : Character Demo</h5>
@@ -31,12 +31,18 @@
   <input class="border border-danger rounded-pill" type="text" id="name" value='' placeholder="Hero Name">
   </div><br>
 
-<div class="text-center">
+<div class="text-center" id="titleIntro">
   <h4>Create a character then roll the D20. If you roll a 1 you must then roll for a Calamity. If you roll a 20, you get to roll for an Enhancement. Next I will be working on introducing a rival to do battle! Stay tuned.</h4>
 </div>
 
-<div class="row g-0 text-center">
-  <div class="d-grid gap-2 mx-auto" style="max-width: 300px; display: block">
+<div class="row g-0 text-center" id="startBattle" style="display:block">
+  <div class="d-grid gap-2 mx-auto" style="max-width: 300px;">
+    <button class="btn-secondary btn-lg my-4" onclick="startBattle()">Summon the Challenger</button>
+  </div>
+  </div>
+
+<div class="row g-0 text-center" style="display:none">
+  <div class="d-grid gap-2 mx-auto" style="max-width: 300px;">
     <button class="btn-secondary btn-lg my-4" onclick="hero.heroRollD20()">Roll D20</button>
   </div>
   </div>
@@ -389,15 +395,15 @@
     </div>
 
 <div id="logs" class="container" style="display:block; max-width: 500px">
-  <div class="row">
-    <div id="rivalLog" class="col-12 align-self-center"></div>
-  </div>
+  <div id="rivalLog" class="row justify-content-start list-group-item-danger text-dark";>
+    <div class="list-group-item-danger text-center"></div>
+  </div><br>
   <div id="heroLog" class="row mx-auto">
-    <div class="card col-2 list-group-item-warning text-center">
+    <div class="list-group-item-warning text-center">
     </div>
     </div>
   </div>
-</div>
+
 
 
 <div id="heroBar" class="container pb-1" style="display: none; background-color:black">
@@ -479,7 +485,7 @@
     <div id="heroAbilities" class="row list-group-item-warning mx-auto">
     <div class="col container-fluid list-group list-group-horizontal d-flex mx-auto">
       <div class="mx-auto">
-        <button id="heroAttackBtn" type="button" class="btn mx-auto" onclick="hero.attackTarget(hero)"  data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d6 + Attack damage">
+        <button id="heroAttackBtn" type="button" class="btn mx-auto" onclick="hero.attackTarget(rival)"  data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d6 + Attack damage">
         <img src="https://www.dropbox.com/s/vgbus0ygz5zo1dr/champattack.png?raw=1" style="width: 75px; height: 75px">
         </button>
         <button id="heroAAbilityBtn" class="btn mx-auto" data-bs-toggle="tooltip" data-bs-placement="top" title="D20 + Attack to hit doing 1d8 + Attack damage. Cooldown: 3">
@@ -500,7 +506,7 @@
     </div>
    
       <div class="card-footer fw-bold list-group-item-danger text-center mx-auto border border-top d-grid p-2">
-        <button id="endturn" type="button"  class="btn btn-danger" onclick="endTurn(hero)">
+        <button id="endturn" type="button"  class="btn btn-danger" onclick="endTurn(hero, rival)">
           END TURN
         </button>
     
